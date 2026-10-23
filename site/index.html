@@ -1,0 +1,3064 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Agile &amp; Scrum Mastery | Produced by PNiXStudio</title>
+
+  <!-- Google Fonts: Outfit, Inter, Work Sans & JetBrains Mono -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Font Awesome 6.7.2 -->
+  <link rel="stylesheet" href="assets/icons.css">
+
+  <!-- Tailwind CSS -->
+  <script src="assets/tailwind.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Work Sans', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+            outfit: ['Outfit', 'sans-serif'],
+            work: ['Work Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            slate: {
+              850: '#162032',
+              900: '#0f172a',
+              950: '#020617'
+            },
+            accent: {
+              blue: '#8B5CF6',
+              purple: '#a855f7',
+              pink: '#C4B5FD',
+              cyan: '#A78BFA'
+            },
+            pnix: {
+              black: '#0D0D0D',
+              midnight: '#000426',
+              slate: '#112840',
+              gray: '#727372',
+              silver: '#D9D8D7',
+              purple: '#7C3AED',
+              mint: '#B9A1FF',
+              amber: '#F59E0B',
+              tangerine: '#EA580C'
+            }
+          },
+          animation: {
+            'gradient-x': 'gradient-x 4s ease infinite',
+            'fade-in-up': 'fadeInUp 0.45s ease-out forwards'
+          },
+          keyframes: {
+            'gradient-x': {
+              '0%, 100%': {
+                'background-size': '200% 200%',
+                'background-position': 'left center'
+              },
+              '50%': {
+                'background-size': '200% 200%',
+                'background-position': 'right center'
+              }
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(16px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: #020617;
+      background-image:
+        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.14), transparent 28%),
+        radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.15), transparent 28%),
+        radial-gradient(circle at 50% 85%, rgba(111, 219, 152, 0.08), transparent 35%);
+      background-attachment: fixed;
+      color: #e2e8f0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* b.a.r.e. | FORM Text Gradient */
+    .text-gradient {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(to right, #8B5CF6, #a855f7, #C4B5FD);
+    }
+
+    /* b.a.r.e. | FORM Architectural Grid Pattern for Card Banners */
+    .bg-grid-pattern {
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Static Glass Card (Read-Only Course Containers — Zero False Hover Movement) */
+    .glass-card-static {
+      background: rgba(30, 41, 59, 0.58);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Interactive Glass Card (Flip Cards & Clickable Triggers — Moves on Hover) */
+    .glass-card-interactive {
+      background: rgba(30, 41, 59, 0.62);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .glass-card-interactive:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.65);
+    }
+
+    /* Strict Geometric Icon Badge Centering */
+    .bare-badge-center {
+      display: grid !important;
+      place-items: center !important;
+    }
+    .bare-badge-center > i {
+      display: block;
+      line-height: 1;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    /* FontAwesome Watermark & 64px Badge Glyph Sizing */
+    .fa-badge-icon {
+      font-size: 1.75rem;
+    }
+    .fa-bg-icon {
+      font-size: 10.5rem;
+      line-height: 1;
+    }
+
+    /* True iOS Liquid Glass Header & Footer */
+    .pnix-liquid-header {
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pnix-liquid-footer {
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    /* Liquid Glass Slide-Out Drawer Shell & Menu Tiles */
+    .pnix-liquid-drawer {
+      background: linear-gradient(
+        165deg,
+        rgba(22, 32, 50, 0.75) 0%,
+        rgba(15, 23, 42, 0.85) 60%,
+        rgba(2, 6, 23, 0.92) 100%
+      );
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border-right: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 16px 0 48px 0 rgba(0, 0, 0, 0.75);
+    }
+
+    .pnix-glass-item {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(30, 41, 59, 0.35) 100%
+      );
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+    }
+    .pnix-glass-item:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(104, 0, 165, 0.28) 100%
+      );
+      border-color: rgba(111, 219, 152, 0.45);
+      transform: translateX(3px);
+    }
+
+    .pnix-glass-item-active {
+      background: linear-gradient(
+        135deg,
+        rgba(111, 219, 152, 0.16) 0%,
+        rgba(104, 0, 165, 0.38) 100%
+      );
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(111, 219, 152, 0.65);
+      box-shadow:
+        0 8px 24px -4px rgba(104, 0, 165, 0.45),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+    }
+
+    /* Primary Kinetic Purple Action CTA */
+    .pnix-kinetic-btn {
+      background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%);
+      color: #FFFFFF;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 22px rgba(104, 0, 165, 0.55);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .pnix-kinetic-btn:hover {
+      background: linear-gradient(135deg, #7E22CE 0%, #A855F7 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(147, 51, 234, 0.68);
+    }
+
+    /* Top Spectrum Position Bar */
+    .pnix-spectrum-bar {
+      background: linear-gradient(90deg, #8B5CF6 0%, #a855f7 50%, #B9A1FF 100%);
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+      transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* =====================================================================
+       DYNAMIC CONTENT-GROWING 3D IN-PLACE FLIP CARD ENGINE
+       Uses CSS Grid 1x1 overlay so cards grow naturally with enlarged text
+       while flipping strictly in-place without dropping rows.
+       ===================================================================== */
+    .flip-scene {
+      position: relative;
+      z-index: 10;
+      perspective: 1200px;
+      -webkit-perspective: 1200px;
+    }
+    .flip-card-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      width: 100%;
+      min-height: 100%;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+    }
+    .flip-card-inner.is-flipped {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+    .flip-face {
+      grid-area: 1 / 1 / 2 / 2;
+      width: 100%;
+      min-height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: rotateY(0deg) translateZ(1px);
+      -webkit-transform: rotateY(0deg) translateZ(1px);
+    }
+    .flip-face-back {
+      transform: rotateY(180deg) translateZ(2px);
+      -webkit-transform: rotateY(180deg) translateZ(2px);
+    }
+
+    /* Modal Transitions */
+    #diagram-modal {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    #diagram-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #diagram-modal-content {
+      transform: scale(0.95) translateY(16px);
+      opacity: 0;
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #diagram-modal.active #diagram-modal-content {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Respect Reduced Motion Preferences */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .flip-card-inner {
+        transition: none !important;
+      }
+      .flip-card-inner:not(.is-flipped) .flip-face-back {
+        display: none !important;
+      }
+      .flip-card-inner.is-flipped .flip-face-front {
+        display: none !important;
+      }
+      .flip-card-inner.is-flipped,
+      .flip-face-back {
+        transform: none !important;
+        -webkit-transform: none !important;
+      }
+    }
+  </style>
+<meta name="theme-color" content="#08080f"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><style>
+    /* Custom Scrollbar & Micro-interactions */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #08080f; }
+    ::-webkit-scrollbar-thumb { background: #26273b; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #7C3AED; }
+
+    .glass-panel {
+      background: rgba(15, 17, 29, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .glass-card-interactive {
+      background: rgba(18, 20, 35, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card-interactive:hover:not(:disabled) {
+      border-color: rgba(168, 85, 247, 0.45);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.15);
+    }
+
+    @keyframes pulseSubtle {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    .pulse-glow {
+      animation: pulseSubtle 4s ease-in-out infinite;
+    }
+  
+:root{--pnix-bg:#08080f;--pnix-accent:#8B5CF6;--pnix-action:#7C3AED}
+body{background-color:var(--pnix-bg)!important;background-image:radial-gradient(ellipse at 85% 10%,#7c3aed18,transparent 50%)!important}
+.pnix-liquid-header,.glass-panel,.glass-card-static{background-color:rgba(16,16,29,.88)!important;border-color:#ffffff14!important}
+.text-gradient,.pnix-spectrum-bar{background-image:linear-gradient(110deg,#c4b5fd,#8b5cf6,#7c3aed)!important}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid #c4b5fd;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style><style id="ambient-ribbons-style">
+body{isolation:isolate}
+.ambient-background{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:#08080f url('assets/ambient-ribbons.jpg') center/cover no-repeat}
+.ambient-background video{width:100%;height:100%;object-fit:cover;opacity:.75}
+.ambient-background:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,15,.32),rgba(8,8,15,.45) 60%,rgba(8,8,15,.72))}
+.ambient-background.still video{visibility:hidden}
+.ambient-background.still{background-blend-mode:screen}
+.ambient-control{display:flex;justify-content:flex-end;margin-bottom:1.25rem}
+.ambient-control button{font-size:.75rem;letter-spacing:.02em;color:#d4c6ff;background:#10101de0;border:1px solid #b9a1ff44;border-radius:999px;padding:.55rem .9rem;min-height:36px}
+@media(prefers-reduced-motion:reduce){.ambient-background video{visibility:hidden}}
+</style></head>
+
+<body class="text-slate-200 min-h-screen font-sans text-base antialiased overflow-x-hidden selection:bg-accent-purple selection:text-white">
+<div class="ambient-background still" aria-hidden="true"><video id="ambient-video" muted loop playsinline preload="none" poster="assets/ambient-ribbons.jpg" disablepictureinpicture><source src="assets/ambient-ribbons.mp4" type="video/mp4"></video></div>
+
+  <!-- Skip to Main Content Link for Keyboard Users -->
+  <a
+    href="#module-viewport"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:rounded-xl focus:bg-slate-900 focus:text-pnix-mint focus:border focus:border-pnix-mint focus:shadow-2xl font-mono text-sm"
+  >
+    Skip to course content
+  </a>
+
+  <!-- =====================================================================
+       FIXED LIQUID GLASS HEADER (Flush-Left Title + Visible Module Label + Menu Button)
+       ===================================================================== -->
+  <header class="pnix-liquid-header fixed top-0 inset-x-0 z-40">
+    <!-- Top Module Position Indicator Bar -->
+    <div class="w-full h-1 bg-slate-950/80 overflow-hidden" aria-hidden="true">
+      <div id="top-progress-bar" class="pnix-spectrum-bar h-full w-1/6"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-3.5 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 sm:gap-3.5 min-w-0">
+        <div class="bare-badge-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-white/10 bg-gradient-to-br from-slate-800 to-slate-900 shadow-xl text-accent-cyan shrink-0" aria-hidden="true">
+          <i class="fa-solid fa-cube text-lg sm:text-xl"></i>
+        </div>
+        <div class="leading-tight min-w-0">
+          <div class="font-display font-light text-lg sm:text-2xl text-white tracking-tight truncate">
+            Agile &amp; Scrum Mastery
+          </div>
+          <div class="text-xs sm:text-sm text-slate-300 font-light mt-0.5 truncate">
+            <span class="font-display font-normal text-slate-100">PNiX</span><span class="font-display font-thin text-pnix-mint">Studio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Controls: Visible Module Position Badge (Mobile + Desktop) + Menu Button -->
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        <div
+          id="header-mod-status"
+          aria-live="polite"
+          class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-white/15 font-mono text-xs sm:text-sm text-pnix-mint tracking-tight shadow-inner whitespace-nowrap"
+        >
+          Module 1 of 7
+        </div>
+
+        <button
+          type="button"
+          id="drawer-open-btn"
+          aria-label="Toggle course module navigation"
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+          class="group w-11 h-11 rounded-xl border border-white/15 bg-slate-800/75 hover:bg-slate-800 hover:border-pnix-mint/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint flex flex-col items-center justify-center gap-1.5 transition-all shadow-lg shrink-0"
+        >
+          <span class="w-5 h-0.5 bg-pnix-mint rounded-full transition-transform group-hover:-translate-y-0.5"></span>
+          <span class="w-5 h-0.5 bg-pnix-mint rounded-full"></span>
+          <span class="w-5 h-0.5 bg-pnix-mint rounded-full transition-transform group-hover:translate-y-0.5"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       LIQUID GLASS SLIDE-OVER NAVIGATION DRAWER (Hidden & Inert When Closed)
+       ===================================================================== -->
+  <div id="drawer-backdrop" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-[3px] hidden opacity-0 transition-opacity duration-200" aria-hidden="true"></div>
+  <aside
+    id="nav-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="drawer-title"
+    aria-hidden="true"
+    inert
+    class="fixed top-0 left-0 bottom-0 z-50 w-80 max-w-[88vw] pnix-liquid-drawer transform -translate-x-full transition-transform duration-300 hidden flex-col"
+  >
+    <div class="p-5 sm:p-6 border-b border-white/10 flex items-center justify-between gap-3">
+      <div>
+        <h2 id="drawer-title" class="font-display font-normal text-xl text-white tracking-tight leading-snug">
+          Course Modules
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-0.5 font-light">
+          <span class="font-display font-normal text-slate-100">PNiX</span><span class="font-display font-thin text-pnix-mint">Studio</span>
+        </p>
+      </div>
+      <button
+        type="button"
+        id="drawer-close-btn"
+        aria-label="Close navigation menu"
+        class="bare-badge-center w-10 h-10 text-slate-300 hover:text-white transition-colors rounded-xl border border-white/10 hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint"
+      >
+        <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <nav id="drawer-nav-list" aria-label="Course Modules" class="flex-1 overflow-y-auto p-4 space-y-2.5">
+      <!-- Populated dynamically via JS -->
+    </nav>
+
+    <!-- Learner-Oriented Progress Summary & Explicit Quiz Reset -->
+    <div class="p-4 border-t border-white/10 bg-slate-950/60 space-y-2.5 text-sm text-slate-300">
+      <div class="flex items-center justify-between">
+        <span>Current Position</span>
+        <span id="drawer-position-status" class="text-pnix-mint font-mono font-medium">Module 1 of 7</span>
+      </div>
+      <div class="flex items-center justify-between">
+        <span>Modules Visited</span>
+        <span id="drawer-visited-status" class="text-slate-200 font-mono">1 of 7 viewed</span>
+      </div>
+      <div class="flex items-center justify-between">
+        <span>Scenario Lab Quiz</span>
+        <span id="drawer-quiz-status" class="text-purple-300 font-mono">0 of 3 answered</span>
+      </div>
+      <button
+        type="button"
+        id="drawer-reset-quiz-btn"
+        onclick="resetQuizProgress()"
+        class="w-full mt-1 py-2 px-3 rounded-xl border border-white/15 bg-slate-800/80 hover:bg-slate-800 hover:border-rose-400/50 text-xs font-mono text-slate-200 hover:text-rose-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint"
+      >
+        Reset Saved Quiz Answers
+      </button>
+    </div>
+  </aside>
+
+  <!-- =====================================================================
+       b.a.r.e. | FORM DETAIL & DIAGRAM LIGHTBOX MODAL (Hidden & Inert When Closed)
+       ===================================================================== -->
+  <div
+    id="diagram-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-pillar-title"
+    aria-describedby="modal-pillar-desc"
+    aria-hidden="true"
+    inert
+    onclick="closeDiagramModal()"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm"
+  >
+    <div
+      id="diagram-modal-content"
+      onclick="event.stopPropagation()"
+      class="bg-slate-900 border border-slate-700 w-full max-w-3xl max-h-[88vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden relative"
+    >
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 border-b border-slate-800 flex justify-between items-center bg-slate-850/60">
+        <div class="flex items-center gap-4">
+          <div id="modal-pillar-icon-wrap" class="bare-badge-center w-12 h-12 rounded-xl border" aria-hidden="true">
+            <i id="modal-pillar-icon" class="text-xl"></i>
+          </div>
+          <div>
+            <p class="font-mono text-xs text-slate-400 uppercase tracking-wider">Empirical Pillar Diagram</p>
+            <h3 id="modal-pillar-title" class="text-2xl font-display font-semibold text-white"></h3>
+          </div>
+        </div>
+        <button
+          type="button"
+          id="modal-close-btn"
+          aria-label="Close diagram modal"
+          onclick="closeDiagramModal()"
+          class="bare-badge-center w-10 h-10 text-slate-300 hover:text-white transition-colors rounded-xl border border-white/10 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint"
+        >
+          <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-6 md:p-8 overflow-y-auto space-y-6 font-light text-slate-200">
+        <div class="rounded-2xl bg-slate-950 border border-slate-800 p-5 sm:p-6 shadow-inner">
+          <div id="modal-diagram-subtitle" class="font-mono text-xs sm:text-sm tracking-wider uppercase mb-4"></div>
+          <div id="modal-diagram-body"></div>
+        </div>
+
+        <div class="p-5 rounded-xl bg-slate-800/60 border border-slate-700 relative overflow-hidden">
+          <div id="modal-trap-bar" class="absolute top-0 left-0 w-1.5 h-full bg-accent-cyan"></div>
+          <h4 id="modal-trap-heading" class="font-semibold text-base mb-1.5">Why It Matters</h4>
+          <p id="modal-pillar-desc" class="text-base text-slate-200 font-light leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MAIN COURSE CANVAS (Generous b.a.r.e. | FORM Spacing: max-w-6xl)
+       ===================================================================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 pt-28 pb-32"><div class="ambient-control"><button id="ambient-motion-toggle" type="button" aria-pressed="false">Background motion: Off</button></div>
+    <div id="module-viewport" tabindex="-1" class="space-y-14 focus:outline-none"></div>
+
+    <!-- MANDATORY UNCOLLAPSIBLE FOOTER BUMPER -->
+    <div class="h-40 w-full flex-shrink-0 pointer-events-none" aria-hidden="true"></div>
+  </main>
+
+  <!-- =====================================================================
+       FIXED LIQUID GLASS WIZARD FOOTER
+       ===================================================================== -->
+  <footer class="pnix-liquid-footer fixed bottom-0 inset-x-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-3.5 flex items-center justify-between gap-2 sm:gap-4">
+      <button
+        type="button"
+        id="prev-mod-btn"
+        class="px-3.5 sm:px-4 py-2.5 rounded-xl border border-white/15 bg-slate-800/80 text-slate-200 font-normal text-sm sm:text-base hover:border-purple-400/60 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint transition-all disabled:opacity-35 disabled:pointer-events-none flex items-center gap-2 shrink-0"
+      >
+        <span aria-hidden="true">←</span>
+        <span>Prev<span class="hidden sm:inline"> Module</span></span>
+      </button>
+
+      <!-- Center Position & Step Indicators (Visible on Mobile & Desktop) -->
+      <div class="flex flex-col items-center justify-center gap-1.5 min-w-0">
+        <div id="footer-mod-status" class="font-mono text-xs sm:text-sm text-slate-200 font-medium tracking-tight whitespace-nowrap">
+          Module 1 of 7
+        </div>
+        <div class="hidden sm:flex items-center gap-2" id="footer-dots" role="group" aria-label="Jump to module"></div>
+      </div>
+
+      <button
+        type="button"
+        id="next-mod-btn"
+        class="pnix-kinetic-btn px-4 sm:px-5 py-2.5 rounded-xl text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint flex items-center gap-2 shrink-0"
+      >
+        <span id="next-btn-label">Next Module</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       COURSE DATA & RENDER ENGINE (100% 2020 SCRUM GUIDE SYLLABUS)
+       ===================================================================== -->
+<script src="assets/lucide.js"></script><script>(()=>{
+
+    /**
+     * 2020 Scrum Guide Dataset & Scenarios
+     */
+    const scenariosData = [
+      {
+        id: "sc-1",
+        accountability: "Developers",
+        theme: "Sprint Backlog Ownership",
+        title: "The Mid-Sprint Executive Directive",
+        description: "Day 4 of a 10-day Sprint: The VP of Sales demands an urgent 'unplanned' authentication feature for a critical prospect. The Product Owner immediately agrees and commands two specific Developers to drop their ongoing Sprint backlog tasks and immediately start coding the VP's requests.",
+        question: "According to the 2020 Scrum Guide, which response aligns strictly with Scrum principles?",
+        difficulty: "Core Accountability",
+        options: [
+          {
+            id: "opt-1",
+            text: "The Developers must comply immediately because the Product Owner owns the scope and prioritizes all value delivery.",
+            isCorrect: false,
+            feedback: "The PO owns the Product Backlog, but does NOT manage the Developers or assign daily tasks.",
+            principle: "The 2020 Scrum Guide states: 'The Sprint Backlog is a plan by and for the Developers.' No one can tell the Developers how to turn Product Backlog items into Increments of value.",
+            antiPattern: "Command-and-Control PO / The Proxy Project Manager. Treating the Sprint Backlog as a top-down dispatch queue destroys self-management."
+          },
+          {
+            id: "opt-2",
+            text: "The Developers and PO collaboratively assess whether this request impacts the Sprint Goal. If it does not endanger the Goal, the Developers can negotiate adapting the Sprint Backlog.",
+            isCorrect: true,
+            feedback: "Spot on! The Sprint Goal is the commitment. Scope can be clarified and renegotiated with the Product Owner as more is learned, provided the Sprint Goal is not compromised.",
+            principle: "2020 Scrum Guide: 'No changes are made that would endanger the Sprint Goal.' Scope may be clarified and renegotiated with the Product Owner as more is learned.",
+            antiPattern: "Avoided 'Rigid Scope Lock' and avoided 'Arbitrary Scope Injection'."
+          },
+          {
+            id: "opt-3",
+            text: "The Scrum Master must intervene and immediately cancel the current Sprint because new requirements arrived.",
+            isCorrect: false,
+            feedback: "A Sprint is only cancelled if the Sprint Goal becomes obsolete, and ONLY the Product Owner has the authority to do so.",
+            principle: "2020 Scrum Guide: 'A Sprint could be cancelled if the Sprint Goal becomes obsolete. Only the Product Owner has the authority to cancel the Sprint.'",
+            antiPattern: "The Authoritarian Scrum Master. The SM does not cancel Sprints unilaterally over new feature requests."
+          },
+          {
+            id: "opt-4",
+            text: "The Developers should secretly work overtime to finish both the current Sprint items and the VP's request without telling anyone.",
+            isCorrect: false,
+            feedback: "Working hidden overtime destroys transparency and sustainable pace.",
+            principle: "Scrum rests on transparency and sustainable work: 'Scrum makes clear the relative efficacy of current practices so that improvements can be made.'",
+            antiPattern: "Dark Backlog / Hero Culture. Hiding real capacity leads to technical debt and burnout."
+          }
+        ]
+      },
+      {
+        id: "sc-2",
+        accountability: "Scrum Master",
+        theme: "Servant Leadership vs Project Control",
+        title: "The Burndown Police at the Daily Scrum",
+        description: "During the Daily Scrum, the Scrum Master shares their screen displaying a 100% committed burndown chart. The SM calls on each Developer one by one, questioning why task burn hours are lagging behind the linear trend line and asking for adjusted individual commitments.",
+        question: "How should the Daily Scrum be conducted under the 2020 Scrum Guide?",
+        difficulty: "Daily Scrum Purpose",
+        options: [
+          {
+            id: "opt-1",
+            text: "The Daily Scrum is for Developers to inspect progress toward the Sprint Goal and adapt the Sprint Backlog. The SM is not required to run it.",
+            isCorrect: true,
+            feedback: "Exact. The Daily Scrum is an event for and by the Developers. The Scrum Master serves by ensuring it takes place and stays within the 15-minute timebox, not by leading a status interrogation.",
+            principle: "2020 Scrum Guide: 'The Daily Scrum is a 15-minute event for the Developers of the Scrum Team... The Developers can select whatever structure and techniques they want, as long as their Daily Scrum focuses on progress toward the Sprint Goal.'",
+            antiPattern: "Avoided 'Command-and-Control Status Meeting'. Daily Scrum is not a status report to management or the Scrum Master."
+          },
+          {
+            id: "opt-2",
+            text: "The Scrum Master is solely accountable for tracking story point burndown velocities daily and reallocating tickets.",
+            isCorrect: false,
+            feedback: "Scrum does not mandate burndowns or story points, and the SM does not reassign tasks.",
+            principle: "The 2020 Scrum Guide removed references to tracking remaining work via burndowns; the focus is solely on progress toward the singular Sprint Goal.",
+            antiPattern: "The Micromanager SM / Velocity Obsession. Replacing true value alignment with linear burndown enforcement."
+          },
+          {
+            id: "opt-3",
+            text: "The Product Owner should be running the meeting and asking the three traditional questions.",
+            isCorrect: false,
+            feedback: "The 2020 Scrum Guide removed the rigid 'three questions' format, and the PO does not direct the Daily Scrum.",
+            principle: "The Daily Scrum is strictly by and for the Developers to inspect and adapt their own work.",
+            antiPattern: "PO Status Interrogation."
+          },
+          {
+            id: "opt-4",
+            text: "The Scrum Master should cancel the Daily Scrum if the burndown chart is on schedule.",
+            isCorrect: false,
+            feedback: "The Daily Scrum is a mandatory inspect-and-adapt cadence, not an optional review triggered only when falling behind.",
+            principle: "2020 Scrum Guide: Daily Scrum is a formal event held every working day of the Sprint to reduce complexity and improve communication.",
+            antiPattern: "Skipping Inspection Cadences."
+          }
+        ]
+      },
+      {
+        id: "sc-3",
+        accountability: "Whole Scrum Team",
+        theme: "Sprint Planning & Sprint Goal",
+        title: "Sprint Planning Without a Goal",
+        description: "At the conclusion of an 8-hour Sprint Planning session, the team has pulled 14 unrelated Jira issues matching their estimated velocity. When asked what the Sprint Goal is, the team responds: 'Our goal is simply to complete all 14 assigned tickets.'",
+        question: "What Scrum Guide 2020 standard was violated in this planning session?",
+        difficulty: "Planning Accountability",
+        options: [
+          {
+            id: "opt-1",
+            text: "Nothing was violated. Completing 100% of pulled backlog items is the primary definition of a Sprint Goal.",
+            isCorrect: false,
+            feedback: "A list of tickets is NOT a Sprint Goal. A Sprint Goal is a single objective that provides coherence and flexibility.",
+            principle: "2020 Scrum Guide: 'The Sprint Goal is the single objective for the Sprint. Although the Sprint Goal is a commitment by the Developers, it provides flexibility in terms of the exact work needed to achieve it.'",
+            antiPattern: "The Feature Factory / Ticket Punching. Viewing Sprints as mere delivery batches rather than outcomes that solve a tangible customer problem."
+          },
+          {
+            id: "opt-2",
+            text: "Sprint Planning Topic 1 ('Why is this Sprint valuable?') was neglected. The Scrum Team must craft a Sprint Goal that communicates why the Sprint is valuable.",
+            isCorrect: true,
+            feedback: "Precise! The 2020 Scrum Guide defines three explicit planning topics: Topic 1: Why is this Sprint valuable? Topic 2: What can be Done? Topic 3: How will the chosen work get done?",
+            principle: "2020 Scrum Guide: 'The Product Owner proposes how the product could increase its value and utility in the current Sprint. The whole Scrum Team then collaborates to define a Sprint Goal that communicates why the Sprint is valuable.'",
+            antiPattern: "Avoided 'Mechanical Scrum / Goal-less Sprinting'."
+          },
+          {
+            id: "opt-3",
+            text: "The Product Owner is supposed to write the Sprint Goal alone in advance without consulting the Developers.",
+            isCorrect: false,
+            feedback: "The PO proposes value, but the WHOLE Scrum Team collaborates to define the Sprint Goal.",
+            principle: "2020 Scrum Guide explicitly states: 'The whole Scrum Team then collaborates to define a Sprint Goal.'",
+            antiPattern: "Ivory Tower Product Owner."
+          },
+          {
+            id: "opt-4",
+            text: "The Developers should never commit to more than 5 tickets at once regardless of velocity.",
+            isCorrect: false,
+            feedback: "Scrum does not mandate ticket count limits; it relies on self-management and empirical sizing.",
+            principle: "Developers select items from the Product Backlog based on their past performance, upcoming capacity, and Definition of Done.",
+            antiPattern: "Arbitrary Process Constraints."
+          }
+        ]
+      },
+      {
+        id: "sc-4",
+        accountability: "Developers",
+        theme: "Increment & Definition of Done",
+        title: "The Pre-Release 'Hardening Sprint'",
+        description: "After four Sprints of rapid feature development, the engineering manager announces Sprint 5 will be a 'Hardening and Integration Sprint' dedicated exclusively to manual regression testing, bug remediation, and pipeline fixing before releasing to production.",
+        question: "Why is a 'Hardening Sprint' an anti-pattern under the 2020 Scrum Guide?",
+        difficulty: "Definition of Done",
+        options: [
+          {
+            id: "opt-1",
+            text: "Every Sprint must produce a usable, thoroughly tested Increment that meets the Definition of Done. Hardening Sprints defer quality and obscure technical debt.",
+            isCorrect: true,
+            feedback: "Masterful understanding! In Scrum, an Increment must be usable and meet the Definition of Done *at the moment it is created* every single Sprint.",
+            principle: "2020 Scrum Guide: 'An Increment is a concrete stepping stone toward the Product Goal. Each Increment is additive to all prior Increments and thoroughly verified, ensuring that all Increments work together. In order to provide value, the Increment must be usable.'",
+            antiPattern: "Avoided 'Waterfall in a Sprint Costume / Mini-Waterfall'. Pushing testing to a future sprint violates empiricism."
+          },
+          {
+            id: "opt-2",
+            text: "Hardening Sprints are fully endorsed, but they must be limited to exactly 1 calendar week.",
+            isCorrect: false,
+            feedback: "The Scrum Guide recognizes no such concept as hardening, stabilization, or testing sprints.",
+            principle: "There is no special sprint type in Scrum. Every Sprint follows the exact same cadence and commitments.",
+            antiPattern: "The 'Sprint 0' / 'Hardening Sprint' myth."
+          },
+          {
+            id: "opt-3",
+            text: "The Scrum Master is supposed to perform all integration testing during the Sprint Review, not Developers.",
+            isCorrect: false,
+            feedback: "The SM is not a QA tester, and the Sprint Review is an inspection of progress with stakeholders, not a testing phase.",
+            principle: "Developers are accountable for instilling quality by adhering to a Definition of Done.",
+            antiPattern: "Role Misconception."
+          },
+          {
+            id: "opt-4",
+            text: "Testing is optional in Scrum as long as the Product Owner accepts the User Stories in Jira.",
+            isCorrect: false,
+            feedback: "If an item does not meet the Definition of Done, it cannot be released or even presented at the Sprint Review.",
+            principle: "2020 Scrum Guide: 'If a Product Backlog item does not meet the Definition of Done, it cannot be released or even presented at the Sprint Review.'",
+            antiPattern: "Done isn't Done / Debt Accumulation."
+          }
+        ]
+      },
+      {
+        id: "sc-5",
+        accountability: "Product Owner",
+        theme: "Product Backlog Adaptation & Review",
+        title: "The Fixed Product Backlog at Sprint Review",
+        description: "During the Sprint Review, primary stakeholders and beta customers highlight that a competitor just launched an identical feature, rendering the next 3 scheduled roadmap features low-value. The Product Owner refuses to adjust the Product Backlog, citing: 'The annual plan was approved by the board, so the backlog is locked.'",
+        question: "How does this behavior conflict with the Product Owner accountability in Scrum?",
+        difficulty: "Product Goal & Empiricism",
+        options: [
+          {
+            id: "opt-1",
+            text: "The PO is correct because the Product Backlog should only be updated once per fiscal quarter.",
+            isCorrect: false,
+            feedback: "The Product Backlog is never locked; it is an emergent, ordered list that continuously adapts.",
+            principle: "2020 Scrum Guide: 'The Product Backlog is an emergent, ordered list of what is needed to improve the product. It is the single source of work undertaken by the Scrum Team.'",
+            antiPattern: "The Plan-Driven Dogmatist. Mistaking Scrum for iterative stage-gate delivery."
+          },
+          {
+            id: "opt-2",
+            text: "The Sprint Review is an inspect-and-adapt event where the Scrum Team and stakeholders collaborate on what to do next based on new discoveries.",
+            isCorrect: true,
+            feedback: "Precisely! The Sprint Review is not merely a demo show-and-tell; it is a collaborative working session where the Product Backlog is adjusted to reflect reality.",
+            principle: "2020 Scrum Guide: 'The purpose of the Sprint Review is to inspect the outcome of the Sprint and determine future adaptations. The Scrum Team presents the results of their work to key stakeholders and progress toward the Product Goal is discussed... the Product Backlog may also be adjusted to meet new opportunities.'",
+            antiPattern: "Avoided 'Demo-Only Sprint Review' and 'Fixed-Scope Roadmapping'."
+          },
+          {
+            id: "opt-3",
+            text: "The Developers should vote out the Product Owner immediately without informing management.",
+            isCorrect: false,
+            feedback: "Accountability changes are organizational, not handled through impromptu team coups.",
+            principle: "The Scrum Guide defines accountabilities, but interpersonal and organizational structures are resolved through leadership and coaching.",
+            antiPattern: "Governance Breakdown."
+          },
+          {
+            id: "opt-4",
+            text: "Stakeholders are forbidden from providing critical feedback during a Sprint Review.",
+            isCorrect: false,
+            feedback: "Stakeholder collaboration is the fundamental heartbeat of the Sprint Review.",
+            principle: "2020 Scrum Guide: Attendees collaborate on what was done and what has changed in their environment. Based on this, attendees collaborate on what to do next.",
+            antiPattern: "Shielded Ivory Tower."
+          }
+        ]
+      }
+    ];
+
+    /**
+     * Application State
+     */
+    let state = {
+      currentIndex: 0,
+      activeFilter: 'ALL',
+      filteredScenarios: [...scenariosData],
+      selectedOptionId: null,
+      answered: false,
+      score: 0,
+      userAnswers: {}, // scenarioId -> { optionId, isCorrect, antiPattern }
+    };
+
+    const STORAGE_KEY = "pnix_mastery_scenarios_v2";
+
+    /**
+     * Initialization & LocalStorage Restore
+     */
+    function engine_init() {
+      engine_loadStoredState();
+      engine_renderScenario();
+      engine_updateHeaderStats();
+      lucide.createIcons();
+    }
+
+    function engine_loadStoredState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.activeFilter = ['ALL','Product Owner','Scrum Master','Developers'].includes(parsed.activeFilter) ? parsed.activeFilter : 'ALL';
+          state.filteredScenarios = scenariosData.filter(s => state.activeFilter === 'ALL' || s.accountability === state.activeFilter);
+          state.userAnswers = parsed.userAnswers || {};
+          state.score = parsed.score || 0;
+          state.currentIndex = Math.min(parsed.currentIndex || 0, state.filteredScenarios.length - 1);
+        }
+      } catch (e) {
+        console.warn("Storage load fallback", e);
+      }
+    }
+
+    function engine_saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          userAnswers: state.userAnswers,
+          score: state.score,
+          activeFilter: state.activeFilter, currentIndex: state.currentIndex
+        }));
+      } catch (e) {
+        console.warn("Storage write failure", e);
+      }
+    }
+
+    /**
+     * Filtering Logic
+     */
+    function engine_setFilter(role) {
+      state.activeFilter = role;
+      document.querySelectorAll('.filter-tab').forEach(btn => {
+        if (btn.dataset.filter === role) {
+          btn.className = "filter-tab px-3 py-1.5 rounded-lg text-xs font-medium bg-purple-600/30 text-purple-200 border border-purple-500/40 transition-all";
+        } else {
+          btn.className = "filter-tab px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all";
+        }
+      });
+
+      if (role === 'ALL') {
+        state.filteredScenarios = [...scenariosData];
+      } else {
+        state.filteredScenarios = scenariosData.filter(s => s.accountability === role);
+      }
+
+      state.currentIndex = 0;
+      state.answered = false;
+      state.selectedOptionId = null;
+      engine_saveState();
+      engine_renderScenario();
+      engine_updateHeaderStats();
+    }
+
+    /**
+     * Render Active Scenario
+     */
+    function engine_renderScenario() {
+      const container = document.getElementById('quiz-container');
+      const resultsScreen = document.getElementById('results-screen');
+      const feedbackDrawer = document.getElementById('feedback-drawer');
+
+      // If finished all in current filter
+      if (state.currentIndex >= state.filteredScenarios.length) {
+        engine_showResults();
+        return;
+      }
+
+      container.classList.remove('hidden');
+      resultsScreen.classList.add('hidden');
+      feedbackDrawer.classList.add('hidden');
+
+      const scenario = state.filteredScenarios[state.currentIndex];
+      
+      // Update Scaffolding Text
+      document.getElementById('idx-counter').innerText = state.currentIndex + 1;
+      document.getElementById('total-counter').innerText = state.filteredScenarios.length;
+      document.getElementById('scenario-accountability-pill').innerText = `Role: ${scenario.accountability}`;
+      document.getElementById('scenario-theme-pill').innerText = `#${scenario.theme.replace(/\s+/g, '')}`;
+      document.getElementById('scenario-title').innerText = scenario.title;
+      document.getElementById('scenario-description').innerText = scenario.description;
+      document.getElementById('scenario-question').innerText = scenario.question;
+      document.getElementById('scenario-difficulty').innerText = scenario.difficulty;
+
+      // Update progress bar
+      const pct = ((state.currentIndex + 1) / state.filteredScenarios.length) * 100;
+      document.getElementById('progress-bar').style.width = `${pct}%`;
+
+      // Render Options
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      // Check if previously answered
+      const previousAnswer = state.userAnswers[scenario.id];
+
+      scenario.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.id = `opt-card-${opt.id}`;
+        btn.onclick = () => engine_selectOption(opt.id);
+        btn.className = "w-full text-left p-4 sm:p-5 rounded-xl glass-card-interactive flex items-start gap-4 text-slate-200 group";
+
+        const letter = String.fromCharCode(65 + idx);
+
+        btn.innerHTML = `
+          <div id="badge-${opt.id}" class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-mono text-xs font-semibold text-slate-300 group-hover:border-purple-400/50 group-hover:text-purple-300 shrink-0 transition-colors">
+            ${letter}
+          </div>
+          <div class="flex-1 text-sm sm:text-base leading-snug">
+            ${opt.text}
+          </div>
+        `;
+
+        optionsContainer.appendChild(btn);
+      });
+
+      // If user had answered this before in session, show feedback immediately
+      if (previousAnswer) {
+        engine_selectOption(previousAnswer.selectedId, false);
+      } else {
+        state.answered = false;
+        state.selectedOptionId = null;
+      }
+
+      engine_updateHeaderStats();
+      lucide.createIcons();
+    }
+
+    /**
+     * Option Selection & Evaluation
+     */
+    function engine_selectOption(optionId, isNewInput = true) {
+      if (state.answered && isNewInput) return; // prevent re-answering on same turn
+
+      const scenario = state.filteredScenarios[state.currentIndex];
+      const selected = scenario.options.find(o => o.id === optionId);
+      if (!selected) return;
+
+      state.answered = true;
+      state.selectedOptionId = optionId;
+
+      // Score tallying
+      if (isNewInput && !state.userAnswers[scenario.id]) {
+        if (selected.isCorrect) {
+          state.score += 100;
+        }
+        state.userAnswers[scenario.id] = {
+          scenarioTitle: scenario.title,
+          accountability: scenario.accountability,
+          selectedId: optionId,
+          isCorrect: selected.isCorrect,
+          antiPattern: selected.antiPattern,
+          principle: selected.principle,
+          reasoning: selected.feedback
+        };
+        engine_saveState();
+      }
+
+      // Visual Updates on cards
+      scenario.options.forEach(opt => {
+        const card = document.getElementById(`opt-card-${opt.id}`);
+        const badge = document.getElementById(`badge-${opt.id}`);
+        
+        if (!card) return;
+        card.disabled = true;
+
+        if (opt.id === selected.id) {
+          if (opt.isCorrect) {
+            // Selected & Correct: Emerald Glow
+            card.className = "w-full text-left p-4 sm:p-5 rounded-xl border bg-emerald-950/40 border-emerald-500/80 text-white flex items-start gap-4 shadow-lg shadow-emerald-950/40";
+            badge.className = "w-8 h-8 rounded-lg bg-emerald-500 text-black font-bold flex items-center justify-center shrink-0";
+            badge.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i>`;
+          } else {
+            // Selected & Incorrect: Rose Red
+            card.className = "w-full text-left p-4 sm:p-5 rounded-xl border bg-rose-950/40 border-rose-500/80 text-white flex items-start gap-4 shadow-lg shadow-rose-950/40";
+            badge.className = "w-8 h-8 rounded-lg bg-rose-500 text-white font-bold flex items-center justify-center shrink-0";
+            badge.innerHTML = `<i data-lucide="x" class="w-4 h-4"></i>`;
+          }
+        } else if (opt.isCorrect) {
+          // Highlight the true answer if user picked wrong
+          card.className = "w-full text-left p-4 sm:p-5 rounded-xl border border-emerald-500/50 bg-emerald-950/15 text-emerald-200 flex items-start gap-4";
+          badge.className = "w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center justify-center shrink-0";
+          badge.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i>`;
+        } else {
+          // Dim other options
+          card.className = "w-full text-left p-4 sm:p-5 rounded-xl border border-white/5 bg-black/20 text-slate-500 flex items-start gap-4 opacity-80";
+        }
+      });
+
+      // Populate Feedback Drawer
+      const drawer = document.getElementById('feedback-drawer');
+      const iconBox = document.getElementById('feedback-icon-box');
+      const icon = document.getElementById('feedback-icon');
+      const verdict = document.getElementById('feedback-verdict');
+      const pointsTag = document.getElementById('feedback-points-tag');
+      const reasoning = document.getElementById('feedback-reasoning');
+      const principle = document.getElementById('feedback-principle');
+      const antipattern = document.getElementById('feedback-antipattern');
+
+      if (selected.isCorrect) {
+        iconBox.className = "w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0";
+        icon.setAttribute('data-lucide', 'check-circle');
+        verdict.innerText = "Accurate Scrum 2020 Standard";
+        verdict.className = "text-lg font-bold text-emerald-300 tracking-tight";
+        pointsTag.className = "px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+        pointsTag.innerText = "+100 Pts Earned";
+      } else {
+        iconBox.className = "w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0";
+        icon.setAttribute('data-lucide', 'alert-octagon');
+        verdict.innerText = "Anti-Pattern Deviation Detected";
+        verdict.className = "text-lg font-bold text-rose-300 tracking-tight";
+        pointsTag.className = "px-3 py-1 rounded-full text-xs font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30";
+        pointsTag.innerText = "0 Pts Added";
+      }
+
+      reasoning.innerText = selected.feedback;
+      principle.innerText = selected.principle;
+      antipattern.innerText = selected.antiPattern;
+
+      drawer.classList.remove('hidden');
+      engine_updateHeaderStats();
+      lucide.createIcons();
+
+      // Smooth scroll down to feedback
+      drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    /**
+     * Proceed to Next Scenario
+     */
+    function engine_nextScenario() {
+      state.currentIndex++;
+      engine_saveState();
+      state.answered = false;
+      state.selectedOptionId = null;
+      engine_saveState();
+      engine_renderScenario();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * Header & Score Sync
+     */
+    function engine_updateHeaderStats() {
+      document.getElementById('current-score').innerText = state.score;
+    }
+
+    /**
+     * Show Final Diagnostic Summary
+     */
+    function engine_showResults() {
+      const container = document.getElementById('quiz-container');
+      const resultsScreen = document.getElementById('results-screen');
+      container.classList.add('hidden');
+      resultsScreen.classList.remove('hidden');
+
+      const totalPossible = state.filteredScenarios.length * 100;
+      const filteredScore = state.filteredScenarios.filter(s => state.userAnswers[s.id]?.isCorrect).length * 100;
+      const pct = Math.round((filteredScore / (totalPossible || 1)) * 100);
+
+      document.getElementById('final-score-percent').innerText = `${pct}%`;
+      document.getElementById('final-points-label').innerText = `${filteredScore} / ${totalPossible} Pts`;
+
+      // Archetype classification
+      const archetypeEl = document.getElementById('final-archetype');
+      if (pct >= 90) {
+        archetypeEl.innerText = "Scrum Purist / Guide Mentor";
+        archetypeEl.className = "text-xl font-bold text-emerald-400";
+      } else if (pct >= 60) {
+        archetypeEl.innerText = "Pragmatic Agilist";
+        archetypeEl.className = "text-xl font-bold text-amber-300";
+      } else {
+        archetypeEl.innerText = "Anti-Pattern Vulnerable";
+        archetypeEl.className = "text-xl font-bold text-rose-400";
+      }
+
+      // Count clean decisions
+      let correctCount = 0;
+      state.filteredScenarios.forEach(s => {
+        if (state.userAnswers[s.id]?.isCorrect) correctCount++;
+      });
+      document.getElementById('final-antipattern-count').innerText = `${correctCount} / ${state.filteredScenarios.length}`;
+
+      // Populate Diagnostic Feed
+      const listEl = document.getElementById('diagnostic-items-list');
+      listEl.innerHTML = '';
+
+      state.filteredScenarios.forEach(sc => {
+        const item = state.userAnswers[sc.id];
+        const isPassed = item?.isCorrect;
+        
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-xl border ${isPassed ? 'bg-emerald-950/10 border-emerald-500/20' : 'bg-rose-950/15 border-rose-500/30'} flex flex-col md:flex-row md:items-start justify-between gap-4`;
+
+        card.innerHTML = `
+          <div class="space-y-1.5 flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 rounded ${isPassed ? 'bg-emerald-500/20 text-emerald-300' : 'bg-rose-500/20 text-rose-300'}">
+                ${isPassed ? 'ALIGNED' : 'TRAP TRIGGERED'}
+              </span>
+              <h4 class="text-sm font-bold text-white">${sc.title}</h4>
+            </div>
+            <p class="text-xs text-slate-300">${item?.reasoning || 'Not attempted'}</p>
+            <div class="text-xs text-purple-300/80 font-mono mt-2">
+              <strong>Scrum Rule:</strong> ${item?.principle || sc.options.find(o => o.isCorrect).principle}
+            </div>
+          </div>
+          <div class="shrink-0 text-xs font-mono text-slate-400">
+            Accountability: <span class="text-slate-200">${sc.accountability}</span>
+          </div>
+        `;
+
+        listEl.appendChild(card);
+      });
+
+      lucide.createIcons();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * Reset / Retake actions
+     */
+    function engine_restartQuiz() {
+      state.currentIndex = 0;
+      state.score = 0;
+      state.userAnswers = {};
+      engine_saveState();
+      engine_renderScenario();
+      engine_updateHeaderStats();
+    }
+
+    function engine_resetAssessment() {
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      state.currentIndex = 0;
+      state.score = 0;
+      state.userAnswers = {};
+      state.activeFilter = 'ALL';
+      state.filteredScenarios = [...scenariosData];
+      engine_renderScenario();
+      engine_updateHeaderStats();
+    }
+
+    
+function mountScenarioEngine(){ engine_loadStoredState(); const idx=state.currentIndex; engine_setFilter(state.activeFilter); state.currentIndex=idx; engine_saveState(); engine_renderScenario(); engine_updateHeaderStats(); }
+
+window.engine_init=engine_init;
+window.engine_loadStoredState=engine_loadStoredState;
+window.engine_saveState=engine_saveState;
+window.engine_setFilter=engine_setFilter;
+window.engine_renderScenario=engine_renderScenario;
+window.engine_selectOption=engine_selectOption;
+window.engine_nextScenario=engine_nextScenario;
+window.engine_updateHeaderStats=engine_updateHeaderStats;
+window.engine_showResults=engine_showResults;
+window.engine_restartQuiz=engine_restartQuiz;
+window.engine_resetAssessment=engine_resetAssessment;
+window.mountScenarioEngine=mountScenarioEngine;
+})();</script>
+  <script>
+    const STORAGE_KEY = 'pnix_mastery_course_v2';
+
+    const PILLAR_DATA = [
+      {
+        name: "Transparency",
+        pill: "Shared Artifact Visibility",
+        badgeIcon: "fa-solid fa-eye",
+        bgIcon: "fa-solid fa-eye",
+        color: "text-emerald-400",
+        bg: "bg-emerald-400/10",
+        border: "border-emerald-400/30",
+        banner: "from-emerald-400/30",
+        barColor: "bg-emerald-400",
+        pillStyle: "border-emerald-400/40 text-emerald-300 bg-slate-950/90",
+        triggerHover: "hover:border-emerald-400/80",
+        btnBadge: "bg-emerald-400/15 border-emerald-400/40 text-emerald-300",
+        summary: "The emergent process and work must be visible to those performing the work as well as those receiving the work.",
+        trap: "Important decisions are based on the perceived state of its three formal artifacts. Artifacts with low transparency lead to decisions that diminish value and increase risk. Inspection without transparency is misleading and wasteful.",
+        diagramTitle: "Shared Artifact Visibility & Definition of Done Filter",
+        previewSteps: [
+          { label: "Product Backlog", sub: "Ordered & Transparent", style: "border-emerald-400/40 text-emerald-300" },
+          { label: "Sprint Backlog", sub: "Visible Daily Plan", style: "border-purple-400/40 text-purple-200" },
+          { label: "Done Increment", sub: "Meets Definition of Done", style: "border-emerald-400/60 text-emerald-300" }
+        ],
+        diagramHtml: () => `
+          <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 p-2 items-center">
+            <div class="rounded-xl bg-slate-800/80 border border-white/15 p-4 space-y-2.5 text-center">
+              <div class="font-mono text-xs sm:text-sm text-slate-200 tracking-wider uppercase font-semibold">1. Product Backlog</div>
+              <div class="rounded-lg bg-slate-950 border border-emerald-400/60 py-2.5 px-3 text-sm text-emerald-300 font-mono">
+                PBI #104 (Ordered)
+              </div>
+              <div class="rounded-lg bg-slate-950 border border-white/20 py-2.5 px-3 text-sm text-slate-200 font-mono">
+                PBI #105 (Transparent)
+              </div>
+            </div>
+            <div class="text-emerald-400 font-mono text-2xl text-center rotate-90 md:rotate-0" aria-hidden="true">→</div>
+            <div class="rounded-xl bg-slate-800/80 border border-purple-500/60 p-4 space-y-2.5 text-center">
+              <div class="font-mono text-xs sm:text-sm text-slate-200 tracking-wider uppercase font-semibold">2. Sprint Backlog</div>
+              <div class="rounded-lg bg-slate-950 border border-purple-500/40 py-3 px-3 space-y-1">
+                <div class="text-sm sm:text-base text-white font-medium">Visible Daily Plan</div>
+                <div class="text-xs sm:text-sm text-emerald-300 font-mono">No Hidden Tasks</div>
+              </div>
+            </div>
+            <div class="text-amber-400 font-mono text-2xl text-center rotate-90 md:rotate-0" aria-hidden="true">→</div>
+            <div class="rounded-xl bg-slate-800/90 border border-emerald-400/70 p-4 space-y-2.5 text-center flex flex-col items-center justify-center">
+              <div class="font-mono text-xs sm:text-sm text-emerald-300 tracking-wider uppercase font-semibold">3. Done Increment</div>
+              <div class="w-12 h-12 text-xl rounded-full border-2 border-emerald-400 bg-emerald-400/15 flex items-center justify-center text-emerald-300 font-bold" aria-hidden="true">
+                ✓
+              </div>
+              <div class="text-xs sm:text-sm text-slate-200">Verified against Definition of Done</div>
+            </div>
+          </div>
+        `
+      },
+      {
+        name: "Inspection",
+        pill: "Frequent Cadence Checks",
+        badgeIcon: "fa-solid fa-magnifying-glass-chart",
+        bgIcon: "fa-solid fa-magnifying-glass-chart",
+        color: "text-sky-400",
+        bg: "bg-sky-400/10",
+        border: "border-sky-400/30",
+        banner: "from-sky-400/30",
+        barColor: "bg-sky-400",
+        pillStyle: "border-sky-400/40 text-sky-300 bg-slate-950/90",
+        triggerHover: "hover:border-sky-400/80",
+        btnBadge: "bg-sky-400/15 border-sky-400/40 text-sky-300",
+        summary: "Scrum artifacts and progress toward agreed goals must be inspected frequently and diligently to detect undesirable variances.",
+        trap: "To help with inspection, Scrum provides cadence in the form of its five events. Inspection enables adaptation. Inspection without adaptation is considered pointless—Scrum events are designed to provoke change.",
+        diagramTitle: "5 Cadence Events Inspecting Progress Toward Goals",
+        previewSteps: [
+          { label: "5 Scrum Events", sub: "Regular Cadence", style: "border-sky-400/40 text-sky-300" },
+          { label: "Goal Radar", sub: "Detect Variances Early", style: "border-purple-400/40 text-purple-200" },
+          { label: "Provoke Change", sub: "Enable Adaptation", style: "border-sky-400/60 text-sky-300" }
+        ],
+        diagramHtml: () => `
+          <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 p-2 items-center">
+            <div class="rounded-xl bg-slate-800/80 border border-white/15 p-4 space-y-2.5 text-center">
+              <div class="font-mono text-xs sm:text-sm text-slate-200 uppercase font-semibold">1. 5 Scrum Events</div>
+              <div class="rounded-lg bg-slate-950 border border-sky-400/50 py-2.5 px-3 text-sm text-sky-300 font-mono">
+                Daily Scrum (15m)
+              </div>
+              <div class="rounded-lg bg-slate-950 border border-white/20 py-2.5 px-3 text-sm text-slate-200 font-mono">
+                Planning, Review &amp; Retro
+              </div>
+            </div>
+            <div class="text-sky-400 font-mono text-2xl text-center rotate-90 md:rotate-0" aria-hidden="true">→</div>
+            <div class="rounded-xl bg-slate-800/80 border border-purple-500/60 p-4 space-y-2.5 text-center">
+              <div class="font-mono text-xs sm:text-sm text-slate-200 uppercase font-semibold">2. Goal Radar</div>
+              <div class="rounded-lg bg-slate-950 border border-purple-500/40 py-3 px-3 space-y-1">
+                <div class="text-sm sm:text-base text-white font-medium">Check Variances</div>
+                <div class="text-xs sm:text-sm text-purple-300 font-mono">Product &amp; Sprint Goal</div>
+              </div>
+            </div>
+            <div class="text-amber-400 font-mono text-2xl text-center rotate-90 md:rotate-0" aria-hidden="true">→</div>
+            <div class="rounded-xl bg-slate-800/90 border border-sky-400/70 p-4 space-y-2.5 text-center flex flex-col items-center justify-center">
+              <div class="font-mono text-xs sm:text-sm text-sky-300 uppercase font-semibold">3. Provoke Change</div>
+              <div class="w-12 h-12 text-xl rounded-full border-2 border-sky-400 bg-sky-400/15 flex items-center justify-center text-sky-300 font-mono" aria-hidden="true">
+                ⌖
+              </div>
+              <div class="text-xs sm:text-sm text-slate-200">Triggers immediate adaptation</div>
+            </div>
+          </div>
+        `
+      },
+      {
+        name: "Adaptation",
+        pill: "Immediate Empirical Pivot",
+        badgeIcon: "fa-solid fa-arrows-rotate",
+        bgIcon: "fa-solid fa-arrows-rotate",
+        color: "text-amber-400",
+        bg: "bg-amber-400/10",
+        border: "border-amber-400/30",
+        banner: "from-amber-400/30",
+        barColor: "bg-amber-400",
+        pillStyle: "border-amber-400/40 text-amber-200 bg-slate-950/90",
+        triggerHover: "hover:border-amber-400/80",
+        btnBadge: "bg-amber-400/15 border-amber-400/40 text-amber-300",
+        summary: "If any aspects of a process deviate outside acceptable limits or if the resulting product is unacceptable, the process or materials must be adjusted.",
+        trap: "An adjustment must be made as soon as possible to minimize further deviation. Adaptation becomes more difficult when the people involved are not empowered or self-managing. A Scrum Team is expected to adapt the moment it learns anything new.",
+        diagramTitle: "Immediate Self-Managing Pivot on Deviation",
+        previewSteps: [
+          { label: "Drift Detected", sub: "Outside Acceptable Limits", style: "border-amber-400/40 text-amber-200" },
+          { label: "Instant Pivot", sub: "Self-Managing Adjustment", style: "border-purple-400/40 text-purple-200" },
+          { label: "Value Protected", sub: "Deviation Minimized", style: "border-emerald-400/60 text-emerald-300" }
+        ],
+        diagramHtml: () => `
+          <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 p-2 items-center">
+            <div class="rounded-xl bg-slate-800/80 border border-amber-400/50 p-4 space-y-2.5 text-center">
+              <div class="font-mono text-xs sm:text-sm text-amber-300 uppercase font-semibold">1. Drift Detected</div>
+              <div class="rounded-lg bg-slate-950 border border-amber-400/50 py-2.5 px-3 text-sm text-amber-300 font-mono">
+                Outside Limits
+              </div>
+              <div class="rounded-lg bg-slate-950 border border-white/20 py-2.5 px-3 text-sm text-slate-200 font-mono">
+                New Discovery
+              </div>
+            </div>
+            <div class="text-amber-400 font-mono text-2xl text-center rotate-90 md:rotate-0" aria-hidden="true">→</div>
+            <div class="rounded-xl bg-slate-800/80 border border-purple-500/60 p-4 space-y-2.5 text-center">
+              <div class="font-mono text-xs sm:text-sm text-slate-200 uppercase font-semibold">2. Instant Pivot</div>
+              <div class="rounded-lg bg-slate-950 border border-purple-500/40 py-3 px-3 space-y-1">
+                <div class="text-sm sm:text-base text-white font-medium">Adjust Plan Now</div>
+                <div class="text-xs sm:text-sm text-emerald-300 font-mono">Empowered &amp; Self-Managing</div>
+              </div>
+            </div>
+            <div class="text-emerald-400 font-mono text-2xl text-center rotate-90 md:rotate-0" aria-hidden="true">→</div>
+            <div class="rounded-xl bg-slate-800/90 border border-emerald-400/70 p-4 space-y-2.5 text-center flex flex-col items-center justify-center">
+              <div class="font-mono text-xs sm:text-sm text-emerald-300 uppercase font-semibold">3. Value Protected</div>
+              <div class="w-12 h-12 text-xl rounded-full border-2 border-emerald-400 bg-emerald-400/15 flex items-center justify-center text-emerald-300 font-mono" aria-hidden="true">
+                ↻
+              </div>
+              <div class="text-xs sm:text-sm text-slate-200">Further deviation minimized</div>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    const EXAM_QUESTIONS = [
+      {
+        domain: "Sprint Scope & Goal Negotiation",
+        prompt: "Midway through a two-week Sprint, the VP of Sales demands that the Developers immediately drop a selected Product Backlog item and swap in an urgent client feature of identical size. What is the correct Scrum response?",
+        options: [
+          "The Scrum Master accepts the swap since the Story Point size is identical and velocity will not be impacted.",
+          "The Developers and Product Owner collaborate to negotiate the scope of the Sprint Backlog, provided the change does not endanger the Sprint Goal.",
+          "The Product Owner cancels the Sprint immediately and starts a new Sprint Planning session with the VP.",
+          "The Developers reject all communication until the Sprint Review because the Sprint Backlog is locked during the Sprint."
+        ],
+        correct: 1,
+        breakdown: "<strong>Why B is Correct:</strong> Per the 2020 Scrum Guide, during the Sprint no changes are made that would endanger the Sprint Goal, and scope may be clarified and renegotiated with the Product Owner as more is learned. Only the Product Owner and Developers can renegotiate Sprint Backlog scope.<br><br><strong>Why A, C, and D Are Incorrect:</strong> (A) Neither the VP nor the SM owns the Sprint Backlog. (C) Canceling a Sprint is only done if the Sprint Goal becomes completely obsolete. (D) The Sprint Backlog is emergent, not frozen—provided the Sprint Goal remains protected."
+      },
+      {
+        domain: "Definition of Done Gate",
+        prompt: "On the final afternoon of the Sprint, a high-priority Product Backlog item is 95% complete—all code is written, but one automated regression test mandated by the Definition of Done has not been executed. How should the Scrum Team handle this item at the Sprint Review?",
+        options: [
+          "Demonstrate the feature at the Sprint Review with a disclaimer, claim 95% of the Story Points, and test it in the next Sprint.",
+          "Extend the Sprint by 24 hours so the Developers can run the regression test and achieve 100% completion.",
+          "Do not present the item as part of the Increment and return it to the Product Backlog for future consideration.",
+          "Ask the Product Owner to temporarily waive the Definition of Done so the Increment can be shipped today."
+        ],
+        correct: 2,
+        breakdown: "<strong>Why C is Correct:</strong> The 2020 Scrum Guide explicitly states: 'If a Product Backlog item does not meet the Definition of Done, it cannot be released or even presented at the Sprint Review. Instead, it returns to the Product Backlog for future consideration.'<br><br><strong>Why A, B, and D Are Incorrect:</strong> (A) Showing undone work creates false transparency. (B) Sprints have fixed timeboxes and are never extended. (D) Quality (the Definition of Done) does not decrease during a Sprint."
+      },
+      {
+        domain: "Multi-Team Product Scaling",
+        prompt: "Four Scrum Teams are building a single enterprise cloud platform. How should their Product Backlogs and Definitions of Done be structured?",
+        options: [
+          "Each Scrum Team maintains its own independent Product Backlog and its own Product Owner, synchronized weekly by a Chief Scrum Master.",
+          "All four Scrum Teams share one Product Backlog, one Product Goal, and one Product Owner, and must mutually define and comply with the same Definition of Done.",
+          "They share one Product Backlog, but each team defines a completely separate Definition of Done without needing to integrate their work.",
+          "The Scrum Masters merge the four Sprint Backlogs into one master Gantt chart during the Daily Scrum."
+        ],
+        correct: 1,
+        breakdown: "<strong>Why B is Correct:</strong> If multiple Scrum Teams work together on the same product, they must share one Product Goal, one Product Backlog, and one Product Owner, and they must mutually define and comply with the same Definition of Done so their combined work creates an integrated, usable Increment.<br><br><strong>Why A, C, and D Are Incorrect:</strong> Multiple Product Backlogs or unaligned Definitions of Done for a single product fracture transparency and prevent a cohesive, integrated Increment."
+      }
+    ];
+
+    const SYLLABUS_MODULES = [
+      {
+        id: 1,
+        code: "Module 1 of 7",
+        shortCode: "Mod 01 / 07",
+        title: "Empiricism & The 5 Values",
+        Render: () => `
+          <!-- OPEN-CANVAS b.a.r.e. | FORM MODULE HEADER -->
+          <section class="text-left max-w-3xl animate-fade-in-up">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white mb-3 leading-tight">
+              Empiricism &amp; <span class="text-gradient animate-gradient-x">The 5 Values</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-display font-light text-slate-200 mb-6 italic tracking-wide border-l-2 border-accent-cyan pl-4">
+              "Knowledge comes from experience and making decisions based on what is observed."
+            </p>
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+              Scrum is a lightweight framework that helps people, teams, and organizations generate value through adaptive solutions for complex problems.
+            </p>
+          </section>
+
+          <!-- TWIN FOUNDATION ENGINES -->
+          <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <div class="glass-card-static rounded-2xl flex flex-col overflow-hidden relative">
+              <div class="min-h-[7rem] pt-6 w-full relative overflow-hidden bg-gradient-to-br from-accent-blue/30 via-slate-800/80 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[102px] pr-6 pb-2">
+                <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                <div class="absolute -bottom-8 -right-8 opacity-[0.06] text-accent-blue flex items-center justify-center pointer-events-none" aria-hidden="true">
+                  <i class="fa-solid fa-compass-drafting fa-bg-icon"></i>
+                </div>
+                <h2 class="text-2xl font-display font-semibold text-white tracking-tight leading-tight relative z-10">Empiricism</h2>
+              </div>
+              <div class="flex-1 flex flex-col relative bg-slate-900/40">
+                <div class="bare-badge-center w-16 h-16 rounded-2xl bg-accent-blue/10 border border-accent-blue/25 absolute -top-8 left-6 shadow-xl shadow-slate-950/80 backdrop-blur-md text-accent-blue z-20" aria-hidden="true">
+                  <i class="fa-solid fa-compass-drafting fa-badge-icon"></i>
+                </div>
+                <div class="pl-[102px] pr-6 pt-2 min-h-[2.25rem] flex items-center">
+                  <span class="inline-flex items-center py-1 px-3 rounded-full border border-accent-blue/40 bg-slate-950/90 font-mono text-xs leading-snug text-blue-200">
+                    Evidence-Based Decisions
+                  </span>
+                </div>
+                <div class="p-6 pt-5">
+                  <p class="text-slate-200 text-base leading-relaxed font-light">
+                    Asserts that knowledge comes from actual experience and making decisions based on what is observed rather than upfront speculation.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card-static rounded-2xl flex flex-col overflow-hidden relative">
+              <div class="min-h-[7rem] pt-6 w-full relative overflow-hidden bg-gradient-to-br from-accent-purple/30 via-slate-800/80 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[102px] pr-6 pb-2">
+                <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                <div class="absolute -bottom-8 -right-8 opacity-[0.06] text-accent-purple flex items-center justify-center pointer-events-none" aria-hidden="true">
+                  <i class="fa-solid fa-bolt fa-bg-icon"></i>
+                </div>
+                <h2 class="text-2xl font-display font-semibold text-white tracking-tight leading-tight relative z-10">Lean Thinking</h2>
+              </div>
+              <div class="flex-1 flex flex-col relative bg-slate-900/40">
+                <div class="bare-badge-center w-16 h-16 rounded-2xl bg-accent-purple/10 border border-accent-purple/25 absolute -top-8 left-6 shadow-xl shadow-slate-950/80 backdrop-blur-md text-accent-purple z-20" aria-hidden="true">
+                  <i class="fa-solid fa-bolt fa-badge-icon"></i>
+                </div>
+                <div class="pl-[102px] pr-6 pt-2 min-h-[2.25rem] flex items-center">
+                  <span class="inline-flex items-center py-1 px-3 rounded-full border border-purple-400/40 bg-slate-950/90 font-mono text-xs leading-snug text-purple-200">
+                    Waste Reduction &amp; Focus
+                  </span>
+                </div>
+                <div class="p-6 pt-5">
+                  <p class="text-slate-200 text-base leading-relaxed font-light">
+                    Reduces non-essential waste and focuses the Scrum Team strictly on the essentials required to deliver usable value each Sprint.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- THE THREE EMPIRICAL PILLARS -->
+          <section class="space-y-6">
+            <div class="border-b border-white/10 pb-4">
+              <h2 class="text-2xl sm:text-3xl font-display font-semibold text-white tracking-tight">The Three Empirical Pillars</h2>
+              <p class="text-slate-300 text-base font-light mt-1">
+                Three interdependent pillars uphold every implementation of empirical process control.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+              ${PILLAR_DATA.map((p, idx) => `
+                <div class="glass-card-static rounded-2xl flex flex-col overflow-hidden relative">
+                  <!-- Top Banner -->
+                  <div class="min-h-[7rem] pt-6 w-full relative overflow-hidden bg-gradient-to-br ${p.banner} via-slate-800/80 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[102px] pr-6 pb-2">
+                    <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                    <div class="absolute -bottom-8 -right-8 opacity-[0.06] ${p.color} flex items-center justify-center pointer-events-none" aria-hidden="true">
+                      <i class="${p.bgIcon} fa-bg-icon"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-semibold text-white tracking-tight leading-tight relative z-10">${p.name}</h3>
+                  </div>
+
+                  <!-- Card Body -->
+                  <div class="flex-1 flex flex-col relative bg-slate-900/40">
+                    <div class="bare-badge-center w-16 h-16 rounded-2xl ${p.bg} ${p.border} border absolute -top-8 left-6 shadow-xl shadow-slate-950/80 backdrop-blur-md ${p.color} z-20" aria-hidden="true">
+                      <i class="${p.badgeIcon} fa-badge-icon"></i>
+                    </div>
+
+                    <div class="pl-[102px] pr-6 pt-2 min-h-[2.25rem] flex items-center">
+                      <span class="inline-flex items-center py-1 px-3 rounded-full border ${p.pillStyle} font-mono text-xs leading-snug tracking-tight">
+                        ${p.pill}
+                      </span>
+                    </div>
+
+                    <div class="p-6 pt-5 flex-1 flex flex-col space-y-5">
+                      <p class="text-slate-200 text-base leading-relaxed font-light">${p.summary}</p>
+
+                      <!-- Left-Bordered Callout ("Why It Matters") -->
+                      <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full ${p.barColor}"></div>
+                        <h4 class="${p.color} font-semibold text-xs sm:text-sm uppercase tracking-wider mb-1.5">Why It Matters</h4>
+                        <p class="text-sm sm:text-base text-slate-200 font-light leading-relaxed">${p.trap}</p>
+                      </div>
+
+                      <!-- KEYBOARD-OPERABLE DIAGRAM TRIGGER (Gold-Starred Stacked Steps + Bottom-Center Midline Expand Icon) -->
+                      <div class="pt-1 pb-3">
+                        <button
+                          type="button"
+                          onclick="openDiagramModal(${idx}, this)"
+                          aria-haspopup="dialog"
+                          aria-label="Open enlarged diagram for ${p.name}: ${p.diagramTitle}"
+                          class="group relative w-full text-left rounded-xl bg-slate-950/90 border ${p.border} ${p.triggerHover} p-4 pb-7 transition-all cursor-pointer shadow-inner focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint"
+                        >
+                          <!-- Full-Width Clean Header (Word "Diagram:" Removed) -->
+                          <div class="mb-3.5">
+                            <span class="block font-mono text-xs tracking-wider uppercase ${p.color} font-medium leading-relaxed">
+                              ${p.diagramTitle}
+                            </span>
+                          </div>
+
+                          <!-- Gold-Starred Stacked Step Boxes (Number on Left, Title + Subtitle Stacked on Right) -->
+                          <div class="space-y-2.5">
+                            ${p.previewSteps.map((step, sIdx) => `
+                              <div class="flex items-baseline gap-2.5 rounded-xl bg-slate-900/90 border ${step.style} px-3.5 py-2.5">
+                                <span class="font-mono text-xs sm:text-sm font-semibold shrink-0">${sIdx + 1}.</span>
+                                <div class="flex flex-col min-w-0">
+                                  <span class="font-mono text-xs sm:text-sm font-semibold leading-snug">${step.label}</span>
+                                  <span class="font-sans text-xs sm:text-sm text-slate-300 font-light leading-snug mt-0.5">${step.sub}</span>
+                                </div>
+                              </div>
+                            `).join('')}
+                          </div>
+
+                          <!-- Bottom-Center Midline Expand Icon Badge (36px height -> -bottom-[18px] straddles border midline) -->
+                          <span
+                            class="bare-badge-center w-9 h-9 rounded-xl bg-slate-900 border ${p.btnBadge} shadow-lg shadow-slate-950/90 absolute left-1/2 -translate-x-1/2 -bottom-[18px] z-20 transition-transform duration-300 group-hover:scale-110"
+                            aria-hidden="true"
+                          >
+                            <i class="fa-solid fa-up-right-and-down-left-from-center text-xs"></i>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <!-- THE 5 SCRUM VALUES (C-F-O-R-C) KEYBOARD-ACCESSIBLE 3D FLIP DECK -->
+          <section class="space-y-6">
+            <div class="border-b border-white/10 pb-4">
+              <h2 class="text-2xl sm:text-3xl font-display font-semibold text-white tracking-tight">The Five Scrum Values (C-F-O-R-C)</h2>
+              <p class="text-slate-300 text-base font-light mt-1">
+                Successful use of Scrum depends on people becoming more proficient in living five values. Select or press Enter/Space on any card to flip between its symbol and definition.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 items-stretch">
+              ${[
+                {
+                  letter: "C",
+                  v: "Commitment",
+                  cue: "Goals & Support",
+                  icon: "fa-solid fa-bullseye",
+                  color: "text-accent-blue",
+                  bg: "bg-accent-blue/15",
+                  border: "border-accent-blue/35",
+                  banner: "from-accent-blue/30",
+                  pillStyle: "border-accent-blue/40 text-blue-200 bg-slate-950/90",
+                  barColor: "bg-accent-blue",
+                  d: "The Scrum Team commits to achieving its goals and to supporting each other."
+                },
+                {
+                  letter: "F",
+                  v: "Focus",
+                  cue: "Sprint Priority",
+                  icon: "fa-solid fa-crosshairs",
+                  color: "text-sky-400",
+                  bg: "bg-sky-400/15",
+                  border: "border-sky-400/35",
+                  banner: "from-sky-400/30",
+                  pillStyle: "border-sky-400/40 text-sky-200 bg-slate-950/90",
+                  barColor: "bg-sky-400",
+                  d: "Their primary focus is on the work of the Sprint to make the best possible progress toward these goals."
+                },
+                {
+                  letter: "O",
+                  v: "Openness",
+                  cue: "Work & Challenges",
+                  icon: "fa-solid fa-unlock-keyhole",
+                  color: "text-emerald-400",
+                  bg: "bg-emerald-400/15",
+                  border: "border-emerald-400/35",
+                  banner: "from-emerald-400/30",
+                  pillStyle: "border-emerald-400/40 text-emerald-200 bg-slate-950/90",
+                  barColor: "bg-emerald-400",
+                  d: "The Scrum Team and its stakeholders are open about the work and the challenges."
+                },
+                {
+                  letter: "R",
+                  v: "Respect",
+                  cue: "Capable People",
+                  icon: "fa-solid fa-handshake-simple",
+                  color: "text-violet-400",
+                  bg: "bg-violet-400/15",
+                  border: "border-violet-400/35",
+                  banner: "from-violet-400/30",
+                  pillStyle: "border-violet-400/40 text-violet-200 bg-slate-950/90",
+                  barColor: "bg-violet-400",
+                  d: "Scrum Team members respect each other to be capable, independent people, and are respected as such by the people with whom they work."
+                },
+                {
+                  letter: "C",
+                  v: "Courage",
+                  cue: "Tough Problems",
+                  icon: "fa-solid fa-shield-heart",
+                  color: "text-amber-400",
+                  bg: "bg-amber-400/15",
+                  border: "border-amber-400/35",
+                  banner: "from-amber-400/30",
+                  pillStyle: "border-amber-400/40 text-amber-200 bg-slate-950/90",
+                  barColor: "bg-amber-400",
+                  d: "The Scrum Team members have the courage to do the right thing, to work on tough problems."
+                }
+              ].map((item) => `
+                <div
+                  role="button"
+                  tabindex="0"
+                  aria-pressed="false"
+                  aria-label="${item.v} (${item.cue}). Press Enter or Space to flip for the 2020 Scrum Guide definition."
+                  onclick="toggleFlipCard(this)"
+                  onkeydown="handleFlipKeydown(event, this)"
+                  class="flip-scene cursor-pointer group rounded-2xl transition-transform duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  <div class="flip-card-inner rounded-2xl">
+                    <!-- Front Face (Visible to AT by default) -->
+                    <div class="flip-face flip-face-front glass-card-interactive rounded-2xl overflow-hidden flex flex-col justify-between" aria-hidden="false">
+                      <!-- Top Banner -->
+                      <div class="min-h-[5.25rem] pt-4 w-full relative overflow-hidden bg-gradient-to-br ${item.banner} via-slate-800/85 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[72px] pr-3 pb-1.5">
+                        <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                        <h3 class="text-lg font-display font-semibold text-white group-hover:${item.color} transition-colors leading-tight relative z-10">
+                          ${item.v}
+                        </h3>
+                      </div>
+
+                      <!-- Body Zone -->
+                      <div class="flex-1 flex flex-col justify-between relative bg-slate-900/45">
+                        <div class="bare-badge-center w-12 h-12 rounded-xl ${item.bg} ${item.border} border ${item.color} shadow-lg shadow-slate-950/80 backdrop-blur-md transform group-hover:-translate-y-1 transition-transform duration-300 absolute -top-6 left-3.5 z-20" aria-hidden="true">
+                          <i class="${item.icon} text-lg"></i>
+                        </div>
+
+                        <div class="pl-[72px] pr-3 pt-1.5 min-h-[2rem] flex items-center relative z-10">
+                          <span class="inline-flex items-center py-0.5 px-2.5 rounded-full border ${item.pillStyle} font-mono text-xs leading-snug">
+                            ${item.cue}
+                          </span>
+                        </div>
+
+                        <!-- Giant Watermark + Centerpiece Acronym Letter -->
+                        <div class="px-5 py-6 flex-1 flex flex-col justify-between relative overflow-hidden">
+                          <div class="absolute -bottom-6 -right-6 opacity-[0.07] ${item.color} transform group-hover:scale-110 group-hover:-rotate-6 transition-all duration-700 ease-out pointer-events-none flex items-center justify-center" aria-hidden="true">
+                            <i class="${item.icon} fa-bg-icon"></i>
+                          </div>
+
+                          <div class="my-auto py-4 flex items-center justify-center relative z-10">
+                            <span class="font-display font-bold text-6xl md:text-7xl tracking-tighter text-white/90 group-hover:${item.color} transform group-hover:scale-110 transition-all duration-300 drop-shadow-[0_8px_24px_rgba(0,0,0,0.65)] select-none">
+                              ${item.letter}
+                            </span>
+                          </div>
+
+                          <!-- Color-Matched Bottom Kinetic Bar -->
+                          <div class="pt-3 border-t border-white/10 flex items-center justify-between relative z-10">
+                            <span class="text-xs font-mono text-slate-300">Flip for definition</span>
+                            <i class="fa-solid fa-rotate text-xs ${item.color} group-hover:rotate-90 transition-all duration-300" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Back Face (Hidden from AT until flipped) -->
+                    <div class="flip-face flip-face-back glass-card-interactive bg-slate-900/95 border ${item.border} rounded-2xl overflow-hidden flex flex-col justify-between shadow-2xl" aria-hidden="true" inert>
+                      <div class="min-h-[5.25rem] pt-4 w-full relative overflow-hidden bg-gradient-to-br ${item.banner} via-slate-800/90 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[72px] pr-3 pb-1.5">
+                        <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                        <span class="font-display font-semibold text-lg text-white block leading-tight relative z-10">${item.v}</span>
+                      </div>
+
+                      <div class="flex-1 flex flex-col justify-between relative">
+                        <div class="bare-badge-center w-12 h-12 rounded-xl ${item.bg} ${item.border} border ${item.color} shadow-lg shadow-slate-950/80 backdrop-blur-md absolute -top-6 left-3.5 z-20" aria-hidden="true">
+                          <span class="font-display font-bold text-xl">${item.letter}</span>
+                        </div>
+
+                        <div class="pl-[72px] pr-3 pt-1.5 min-h-[2rem] flex items-center relative z-10">
+                          <span class="inline-flex items-center py-0.5 px-2.5 rounded-full border ${item.pillStyle} font-mono text-xs leading-snug">
+                            ${item.cue}
+                          </span>
+                        </div>
+
+                        <div class="px-4 py-4 flex-1 flex flex-col justify-between relative overflow-hidden">
+                          <div class="absolute -bottom-6 -right-6 opacity-[0.06] ${item.color} pointer-events-none flex items-center justify-center" aria-hidden="true">
+                            <i class="${item.icon} fa-bg-icon"></i>
+                          </div>
+                          <p class="text-sm sm:text-base text-slate-100 font-light leading-relaxed my-auto relative z-10">${item.d}</p>
+                          <div class="flex items-center justify-between pt-3 mt-3 border-t border-white/10 relative z-10">
+                            <span class="text-xs font-mono text-slate-300">Flip back</span>
+                            <i class="fa-solid fa-rotate-left text-xs ${item.color}" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <!-- 2017 VS. 2020 SELF-MANAGING COMPARISON MATRIX -->
+          <section class="glass-card-static rounded-2xl p-6 md:p-8 space-y-6">
+            <div class="border-b border-slate-800 pb-4">
+              <h2 class="text-2xl md:text-3xl font-display font-semibold text-white tracking-tight">Self-Managing (2020) vs. Self-Organizing (2017)</h2>
+              <p class="text-slate-300 text-base font-light mt-1">
+                The 2020 Scrum Guide expanded team autonomy from two dimensions to three.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+              <div class="p-5 rounded-xl bg-slate-800/40 border border-slate-700/80 relative overflow-hidden space-y-3">
+                <div class="absolute top-0 left-0 w-1 h-full bg-slate-500"></div>
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h3 class="text-lg sm:text-xl font-display font-semibold text-slate-200">2017 Scrum Guide (Retired)</h3>
+                  <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 font-mono text-xs">SELF-ORGANIZING</span>
+                </div>
+                <p class="text-base text-slate-300 font-light leading-relaxed">
+                  Teams only chose <strong>who</strong> and <strong>how</strong> to do work inside the old "Development Team."
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-1 font-mono text-xs sm:text-sm text-center">
+                  <div class="py-2 rounded bg-emerald-400/10 border border-emerald-400/30 text-emerald-300">✓ WHO</div>
+                  <div class="py-2 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300">✕ WHEN</div>
+                  <div class="py-2 rounded bg-emerald-400/10 border border-emerald-400/30 text-emerald-300">✓ HOW</div>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-xl bg-slate-800/70 border border-emerald-400/40 relative overflow-hidden space-y-3 shadow-lg">
+                <div class="absolute top-0 left-0 w-1 h-full bg-emerald-400"></div>
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h3 class="text-lg sm:text-xl font-display font-semibold text-white">2020 Scrum Guide (Active Rule)</h3>
+                  <span class="px-2.5 py-1 rounded bg-emerald-400/15 border border-emerald-400/40 text-emerald-300 font-mono text-xs">SELF-MANAGING</span>
+                </div>
+                <p class="text-base text-slate-200 font-light leading-relaxed">
+                  Scrum Teams internally decide <strong>who</strong> does what, <strong>when</strong>, and <strong>how</strong>.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-1 font-mono text-xs sm:text-sm text-center">
+                  <div class="py-2 rounded bg-emerald-400/20 border border-emerald-400/50 text-emerald-200 font-medium">✓ WHO</div>
+                  <div class="py-2 rounded bg-emerald-400/20 border border-emerald-400/50 text-emerald-200 font-medium">✓ WHEN</div>
+                  <div class="py-2 rounded bg-emerald-400/20 border border-emerald-400/50 text-emerald-200 font-medium">✓ HOW</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        `
+      },
+      {
+        id: 2,
+        code: "Module 2 of 7",
+        shortCode: "Mod 02 / 07",
+        title: "The Scrum Team & 3 Accountabilities",
+        Render: () => `
+          <!-- OPEN-CANVAS b.a.r.e. | FORM MODULE HEADER -->
+          <section class="text-left max-w-3xl animate-fade-in-up">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white mb-3 leading-tight">
+              The Scrum Team &amp; <span class="text-gradient animate-gradient-x">3 Accountabilities</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-display font-light text-slate-200 mb-6 italic tracking-wide border-l-2 border-accent-cyan pl-4">
+              "No sub-teams or hierarchies—one cohesive unit focused on the Product Goal."
+            </p>
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+              A Scrum Team consists of one <strong>Scrum Master</strong>, one <strong>Product Owner</strong>, and <strong>Developers</strong>. Teams are cross-functional (possessing all skills necessary to create value each Sprint) and typically <strong>10 or fewer people</strong>.
+            </p>
+          </section>
+
+          <!-- 3 ACCOUNTABILITIES -->
+          <section class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            ${[
+              {
+                role: "Product Owner",
+                badge: "1 Person (Never a Committee)",
+                badgeIcon: "fa-solid fa-bullseye",
+                bgIcon: "fa-solid fa-bullseye",
+                color: "text-emerald-400",
+                bg: "bg-emerald-400/10",
+                border: "border-emerald-400/25",
+                banner: "from-emerald-400/30",
+                pillStyle: "border-emerald-400/40 text-emerald-300 bg-slate-950/90",
+                btnStyle: "bg-emerald-400/10 hover:bg-emerald-400/20 border-emerald-400/35 text-emerald-200",
+                drawerBorder: "border-emerald-400/35",
+                goal: "Accountable for maximizing the value of the product resulting from the work of the Scrum Team.",
+                duties: [
+                  "Developing and explicitly communicating the Product Goal",
+                  "Creating and clearly communicating Product Backlog items",
+                  "Ordering Product Backlog items",
+                  "Ensuring the Product Backlog is transparent, visible, and understood"
+                ],
+                antipattern: "The PO may delegate backlog operations to Developers, but the Product Owner remains strictly accountable. For POs to succeed, the entire organization must respect their decisions—and only the PO has authority to cancel a Sprint."
+              },
+              {
+                role: "Developers",
+                badge: "Professionals Creating Increment",
+                badgeIcon: "fa-solid fa-cubes",
+                bgIcon: "fa-solid fa-cubes",
+                color: "text-accent-purple",
+                bg: "bg-accent-purple/10",
+                border: "border-accent-purple/25",
+                banner: "from-accent-purple/30",
+                pillStyle: "border-purple-400/40 text-purple-200 bg-slate-950/90",
+                btnStyle: "bg-accent-purple/15 hover:bg-accent-purple/25 border-purple-400/40 text-purple-200",
+                drawerBorder: "border-purple-400/35",
+                goal: "Committed to creating any aspect of a usable Increment each Sprint.",
+                duties: [
+                  "Creating a plan for the Sprint, the Sprint Backlog",
+                  "Instilling quality by adhering to a Definition of Done",
+                  "Adapting their plan each day toward the Sprint Goal",
+                  "Holding each other accountable as professionals"
+                ],
+                antipattern: "The 2017 term 'Development Team' was retired in 2020 to eliminate proxy silos between the PO and Developers. Nobody outside the Developers can tell them how to turn Product Backlog items into Increments."
+              },
+              {
+                role: "Scrum Master",
+                badge: "True Leader Who Serves",
+                badgeIcon: "fa-solid fa-shield-halved",
+                bgIcon: "fa-solid fa-shield-halved",
+                color: "text-amber-400",
+                bg: "bg-amber-400/10",
+                border: "border-amber-400/25",
+                banner: "from-amber-400/30",
+                pillStyle: "border-amber-400/40 text-amber-200 bg-slate-950/90",
+                btnStyle: "bg-amber-400/10 hover:bg-amber-400/20 border-amber-400/35 text-amber-200",
+                drawerBorder: "border-amber-400/35",
+                goal: "Accountable for establishing Scrum as defined in the Scrum Guide and for the Scrum Team's effectiveness.",
+                duties: [
+                  "Coaching the team members in self-management and cross-functionality",
+                  "Helping the Scrum Team focus on creating high-value Increments that meet the DoD",
+                  "Causing the removal of impediments to the Scrum Team's progress",
+                  "Ensuring that all Scrum events take place and are positive, productive, and kept within the timebox"
+                ],
+                antipattern: "The Scrum Master is not a project manager, secretary, or team boss. They do not assign tickets, estimate work, or demand status reports at the Daily Scrum."
+              }
+            ].map((r, i) => `
+              <div class="glass-card-static rounded-2xl flex flex-col overflow-hidden relative">
+                <!-- Banner Section -->
+                <div class="min-h-[7rem] pt-6 w-full relative overflow-hidden bg-gradient-to-br ${r.banner} via-slate-800/80 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[102px] pr-6 pb-2">
+                  <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                  <div class="absolute -bottom-8 -right-8 opacity-[0.06] ${r.color} flex items-center justify-center pointer-events-none" aria-hidden="true">
+                    <i class="${r.bgIcon} fa-bg-icon"></i>
+                  </div>
+                  <h2 class="text-2xl font-display font-semibold text-white tracking-tight leading-tight relative z-10">
+                    ${r.role}
+                  </h2>
+                </div>
+
+                <!-- Content Section -->
+                <div class="flex-1 flex flex-col relative bg-slate-900/40">
+                  <div class="bare-badge-center w-16 h-16 rounded-2xl ${r.bg} ${r.border} border absolute -top-8 left-6 shadow-xl shadow-slate-950/80 backdrop-blur-md ${r.color} z-20" aria-hidden="true">
+                    <i class="${r.badgeIcon} fa-badge-icon"></i>
+                  </div>
+
+                  <div class="pl-[102px] pr-6 pt-2 min-h-[2.25rem] flex items-center">
+                    <div class="inline-flex items-center py-1 px-3 rounded-full border ${r.pillStyle} font-mono text-xs leading-snug tracking-tight">
+                      ${r.badge}
+                    </div>
+                  </div>
+
+                  <div class="p-6 pt-5 flex-1 flex flex-col justify-between space-y-5">
+                    <p class="text-base text-slate-200 font-light leading-relaxed">${r.goal}</p>
+
+                    <ul class="space-y-3 pt-3 border-t border-white/10 text-sm sm:text-base text-slate-200 font-light">
+                      ${r.duties.map(d => `<li class="flex items-start gap-2.5"><span class="${r.color} mt-1" aria-hidden="true">▸</span><span>${d}</span></li>`).join('')}
+                    </ul>
+
+                    <!-- ACCESSIBLE ACCORDION BUTTON WITH ARIA-EXPANDED -->
+                    <div class="pt-1 space-y-2.5">
+                      <button
+                        type="button"
+                        id="btn-role-ap-${i}"
+                        aria-expanded="false"
+                        aria-controls="role-ap-${i}"
+                        onclick="toggleAccordion('role-ap-${i}', this)"
+                        class="w-full py-3 px-4 rounded-xl border ${r.btnStyle} text-xs sm:text-sm font-mono flex items-center justify-between transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint"
+                      >
+                        <span>Common Misconceptions</span>
+                        <i id="icon-role-ap-${i}" class="fa-solid fa-chevron-down ${r.color} transition-transform duration-300" aria-hidden="true"></i>
+                      </button>
+                      <div
+                        id="role-ap-${i}"
+                        role="region"
+                        aria-labelledby="btn-role-ap-${i}"
+                        class="hidden p-4 rounded-xl bg-slate-950/90 text-sm sm:text-base text-slate-200 font-light border ${r.drawerBorder} leading-relaxed"
+                      >
+                        ${r.antipattern}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </section>
+        `
+      },
+      {
+        id: 3,
+        code: "Module 3 of 7",
+        shortCode: "Mod 03 / 07",
+        title: "The 5 Scrum Events & Sprint Planning",
+        Render: () => `
+          <!-- OPEN-CANVAS b.a.r.e. | FORM MODULE HEADER -->
+          <section class="text-left max-w-3xl animate-fade-in-up">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white mb-3 leading-tight">
+              The 5 Events &amp; <span class="text-gradient animate-gradient-x">Sprint Planning</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-display font-light text-slate-200 mb-6 italic tracking-wide border-l-2 border-accent-cyan pl-4">
+              "The Sprint is a container for all other events—creating cadence and provoking adaptation."
+            </p>
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+              Each event in Scrum is a formal opportunity to inspect and adapt Scrum artifacts. Optimally, all events are held at the same time and place to reduce complexity.
+            </p>
+          </section>
+
+          <!-- 3 SPRINT PLANNING TOPICS -->
+          <section class="space-y-6">
+            <div class="border-b border-white/10 pb-4">
+              <h2 class="text-2xl sm:text-3xl font-display font-semibold text-white tracking-tight">Three Sprint Planning Topics</h2>
+              <p class="text-slate-300 text-base font-light mt-1">
+                Sprint Planning initiates the Sprint by laying out the work to be performed across three mandatory questions.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+              ${[
+                {
+                  title: "Why is it valuable?",
+                  pill: "Topic 01 • The Sprint Goal",
+                  badgeIcon: "fa-solid fa-compass",
+                  bgIcon: "fa-solid fa-compass",
+                  color: "text-emerald-400",
+                  bg: "bg-emerald-400/10",
+                  border: "border-emerald-400/25",
+                  banner: "from-emerald-400/30",
+                  pillStyle: "border-emerald-400/40 text-emerald-300 bg-slate-950/90",
+                  body: "The Product Owner proposes how the product could increase its value and utility in the current Sprint. The <strong>whole Scrum Team</strong> then collaborates to define a <strong>Sprint Goal</strong> that communicates why the Sprint is valuable to stakeholders."
+                },
+                {
+                  title: "What can be Done?",
+                  pill: "Topic 02 • Scope Selection",
+                  badgeIcon: "fa-solid fa-list-check",
+                  bgIcon: "fa-solid fa-list-check",
+                  color: "text-sky-400",
+                  bg: "bg-sky-400/10",
+                  border: "border-sky-400/25",
+                  banner: "from-sky-400/30",
+                  pillStyle: "border-sky-400/40 text-sky-300 bg-slate-950/90",
+                  body: "Through discussion with the Product Owner, the <strong>Developers select</strong> items from the Product Backlog to include in the current Sprint. Nobody can force Developers to pull more work than they forecast they can complete."
+                },
+                {
+                  title: "How does it get done?",
+                  pill: "Topic 03 • Delivery Plan",
+                  badgeIcon: "fa-solid fa-gears",
+                  bgIcon: "fa-solid fa-gears",
+                  color: "text-accent-purple",
+                  bg: "bg-accent-purple/10",
+                  border: "border-accent-purple/25",
+                  banner: "from-accent-purple/30",
+                  pillStyle: "border-purple-400/40 text-purple-200 bg-slate-950/90",
+                  body: "For each selected Product Backlog item, the <strong>Developers plan the work</strong> necessary to create an Increment that meets the Definition of Done. No one else tells them how to turn Product Backlog items into Increments of value."
+                }
+              ].map(t => `
+                <div class="glass-card-static rounded-2xl flex flex-col overflow-hidden relative">
+                  <div class="min-h-[7rem] pt-6 w-full relative overflow-hidden bg-gradient-to-br ${t.banner} via-slate-800/80 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[102px] pr-6 pb-2">
+                    <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                    <div class="absolute -bottom-8 -right-8 opacity-[0.06] ${t.color} flex items-center justify-center pointer-events-none" aria-hidden="true">
+                      <i class="${t.bgIcon} fa-bg-icon"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-semibold text-white tracking-tight leading-tight relative z-10">${t.title}</h3>
+                  </div>
+                  <div class="flex-1 flex flex-col relative bg-slate-900/40">
+                    <div class="bare-badge-center w-16 h-16 rounded-2xl ${t.bg} ${t.border} border absolute -top-8 left-6 shadow-xl shadow-slate-950/80 backdrop-blur-md ${t.color} z-20" aria-hidden="true">
+                      <i class="${t.badgeIcon} fa-badge-icon"></i>
+                    </div>
+                    <div class="pl-[102px] pr-6 pt-2 min-h-[2.25rem] flex items-center">
+                      <span class="inline-flex items-center py-1 px-3 rounded-full border ${t.pillStyle} font-mono text-xs leading-snug">
+                        ${t.pill}
+                      </span>
+                    </div>
+                    <div class="p-6 pt-5">
+                      <p class="text-slate-200 text-base leading-relaxed font-light">${t.body}</p>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <!-- MASTER EVENT TIMEBOX LEDGER -->
+          <section class="glass-card-static rounded-2xl p-6 md:p-8 overflow-x-auto space-y-5">
+            <div class="border-b border-slate-800 pb-4">
+              <h2 class="text-2xl md:text-3xl font-display font-semibold text-white tracking-tight">2020 Event &amp; Timebox Ledger</h2>
+              <p class="text-slate-300 text-base font-light mt-1">
+                Maximum timeboxes for a one-month Sprint (events are shorter for shorter Sprints, except Daily Scrum).
+              </p>
+            </div>
+
+            <table class="w-full text-left border-collapse text-sm sm:text-base font-light">
+              <thead>
+                <tr class="border-b border-slate-700 text-pnix-mint font-mono text-xs sm:text-sm">
+                  <th scope="col" class="py-3.5 pr-4">Event</th>
+                  <th scope="col" class="py-3.5 pr-4">Max Timebox (1-Mo Sprint)</th>
+                  <th scope="col" class="py-3.5 pr-4">Mandatory Attendees</th>
+                  <th scope="col" class="py-3.5">Core Purpose &amp; Key Rule</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800 text-slate-200">
+                <tr>
+                  <th scope="row" class="py-4 pr-4 font-medium text-white align-top">The Sprint</th>
+                  <td class="py-4 pr-4 font-mono text-sky-300 align-top">1 Month or less (Fixed)</td>
+                  <td class="py-4 pr-4 align-top">Entire Scrum Team</td>
+                  <td class="py-4 align-top leading-relaxed">A new Sprint starts immediately after the conclusion of the previous Sprint. Only the <strong>Product Owner</strong> has the authority to cancel a Sprint (if the Sprint Goal becomes obsolete).</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="py-4 pr-4 font-medium text-white align-top">Sprint Planning</th>
+                  <td class="py-4 pr-4 font-mono text-sky-300 align-top">8 Hours</td>
+                  <td class="py-4 pr-4 align-top">Scrum Team (+ invited SMEs)</td>
+                  <td class="py-4 align-top leading-relaxed">Produces the Sprint Goal, selected Product Backlog items, and a delivery plan (together forming the <strong>Sprint Backlog</strong>).</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="py-4 pr-4 font-medium text-white align-top">Daily Scrum</th>
+                  <td class="py-4 pr-4 font-mono text-emerald-300 align-top">Strictly 15 Minutes</td>
+                  <td class="py-4 pr-4 align-top">Developers (PO/SM participate as Developers if working on Sprint Backlog)</td>
+                  <td class="py-4 align-top leading-relaxed">Inspect progress toward the Sprint Goal and adapt the Sprint Backlog. The 3 classic questions were <strong>removed as a mandate in 2020</strong>—Developers choose any structure they want.</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="py-4 pr-4 font-medium text-white align-top">Sprint Review</th>
+                  <td class="py-4 pr-4 font-mono text-sky-300 align-top">4 Hours</td>
+                  <td class="py-4 pr-4 align-top">Scrum Team + Key Stakeholders</td>
+                  <td class="py-4 align-top leading-relaxed">Inspect the outcome of the Sprint and determine future adaptations. It is a <strong>working session</strong>, never just a one-way presentation or gatekeeping sign-off.</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="py-4 pr-4 font-medium text-white align-top">Sprint Retrospective</th>
+                  <td class="py-4 pr-4 font-mono text-sky-300 align-top">3 Hours</td>
+                  <td class="py-4 pr-4 align-top">Scrum Team Only</td>
+                  <td class="py-4 align-top leading-relaxed">Plan ways to increase quality and effectiveness (individuals, interactions, processes, tools, and DoD). Concludes the Sprint.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        `
+      },
+      {
+        id: 4,
+        code: "Module 4 of 7",
+        shortCode: "Mod 04 / 07",
+        title: "3 Artifacts, Commitments & Metrics",
+        Render: () => `
+          <!-- OPEN-CANVAS b.a.r.e. | FORM MODULE HEADER -->
+          <section class="text-left max-w-3xl animate-fade-in-up">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white mb-3 leading-tight">
+              Artifacts, Commitments &amp; <span class="text-gradient animate-gradient-x">Telemetry</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-display font-light text-slate-200 mb-6 italic tracking-wide border-l-2 border-accent-cyan pl-4">
+              "Each artifact contains a formal commitment to ensure transparency and focus."
+            </p>
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+              In the 2020 Scrum Guide, every artifact is paired with a formal <strong>Commitment</strong>: Product Backlog → <strong>Product Goal</strong>, Sprint Backlog → <strong>Sprint Goal</strong>, and Increment → <strong>Definition of Done</strong>.
+            </p>
+          </section>
+
+          <!-- 3D IN-PLACE FLIP CARDS FOR ARTIFACTS & COMMITMENTS -->
+          <section class="space-y-6">
+            <div class="border-b border-white/10 pb-4">
+              <h2 class="text-2xl sm:text-3xl font-display font-semibold text-white tracking-tight">Artifact → Commitment Architecture</h2>
+              <p class="text-slate-300 text-base font-light mt-1">
+                Three formal artifacts paired with their mandatory 2020 quality and focus commitments. Select or press Enter/Space on any card to flip between the Artifact and its Commitment.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+              ${[
+                {
+                  artifact: "Product Backlog",
+                  cue: "Emergent Ordered Scope",
+                  subtitle: "An emergent, ordered list of what is needed to improve the product. It is the single source of work undertaken by the Scrum Team.",
+                  commitment: "Product Goal",
+                  icon: "fa-solid fa-layer-group",
+                  color: "text-accent-blue",
+                  bg: "bg-accent-blue/15",
+                  border: "border-accent-blue/35",
+                  banner: "from-accent-blue/30",
+                  pillStyle: "border-accent-blue/40 text-blue-200 bg-slate-950/90",
+                  barColor: "bg-accent-blue",
+                  backText: "Describes a future state of the product which can serve as a target for the Scrum Team to plan against. The Scrum Team must fulfill (or abandon) one objective before taking on the next."
+                },
+                {
+                  artifact: "Sprint Backlog",
+                  cue: "Developer Action Plan",
+                  subtitle: "Composed of the Sprint Goal (Why), the set of Product Backlog items selected for the Sprint (What), and an actionable plan for delivering them (How).",
+                  commitment: "Sprint Goal",
+                  icon: "fa-solid fa-route",
+                  color: "text-accent-purple",
+                  bg: "bg-accent-purple/15",
+                  border: "border-accent-purple/35",
+                  banner: "from-accent-purple/30",
+                  pillStyle: "border-purple-400/40 text-purple-200 bg-slate-950/90",
+                  barColor: "bg-accent-purple",
+                  backText: "The single objective for the Sprint. Although the Sprint Goal is a commitment by the Developers, it provides flexibility in terms of the exact work needed to achieve it."
+                },
+                {
+                  artifact: "Increment",
+                  cue: "Verified Usable Value",
+                  subtitle: "A concrete stepping stone toward the Product Goal. Each Increment is additive to all prior Increments and thoroughly verified.",
+                  commitment: "Definition of Done",
+                  icon: "fa-solid fa-cube",
+                  color: "text-emerald-400",
+                  bg: "bg-emerald-400/15",
+                  border: "border-emerald-400/35",
+                  banner: "from-emerald-400/30",
+                  pillStyle: "border-emerald-400/40 text-emerald-200 bg-slate-950/90",
+                  barColor: "bg-emerald-400",
+                  backText: "A formal description of the state of the Increment when it meets the quality measures required for the product. The moment a PBI meets the DoD, an Increment is born."
+                }
+              ].map((c) => `
+                <div
+                  role="button"
+                  tabindex="0"
+                  aria-pressed="false"
+                  aria-label="Artifact: ${c.artifact}. Press Enter or Space to flip for its commitment (${c.commitment})."
+                  onclick="toggleFlipCard(this)"
+                  onkeydown="handleFlipKeydown(event, this)"
+                  class="flip-scene cursor-pointer group rounded-2xl transition-transform duration-300 hover:-translate-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                >
+                  <div class="flip-card-inner rounded-2xl">
+                    <!-- Front Face -->
+                    <div class="flip-face flip-face-front glass-card-interactive rounded-2xl overflow-hidden flex flex-col justify-between" aria-hidden="false">
+                      <div class="min-h-[6.5rem] pt-5 w-full relative overflow-hidden bg-gradient-to-br ${c.banner} via-slate-800/85 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[102px] pr-5 pb-2">
+                        <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                        <h3 class="text-2xl font-display font-semibold text-white group-hover:${c.color} transition-colors leading-tight relative z-10">
+                          ${c.artifact}
+                        </h3>
+                      </div>
+
+                      <div class="flex-1 flex flex-col justify-between relative bg-slate-900/45">
+                        <div class="bare-badge-center w-16 h-16 rounded-2xl ${c.bg} ${c.border} border ${c.color} shadow-xl shadow-slate-950/80 backdrop-blur-md transform group-hover:-translate-y-1 transition-transform duration-300 absolute -top-8 left-6 z-20" aria-hidden="true">
+                          <i class="${c.icon} fa-badge-icon"></i>
+                        </div>
+
+                        <div class="pl-[102px] pr-5 pt-2 min-h-[2.25rem] flex items-center relative z-10">
+                          <span class="inline-flex items-center py-1 px-3 rounded-full border ${c.pillStyle} font-mono text-xs leading-snug">
+                            ${c.cue}
+                          </span>
+                        </div>
+
+                        <div class="px-6 pb-5 pt-4 flex-1 flex flex-col justify-between relative overflow-hidden">
+                          <div class="absolute -bottom-6 -right-6 opacity-[0.07] ${c.color} transform group-hover:scale-110 group-hover:-rotate-6 transition-all duration-700 ease-out pointer-events-none flex items-center justify-center" aria-hidden="true">
+                            <i class="${c.icon} fa-bg-icon"></i>
+                          </div>
+                          <p class="text-base text-slate-200 font-light leading-relaxed my-auto relative z-10">${c.subtitle}</p>
+                          <div class="pt-4 mt-4 border-t border-white/10 flex items-center justify-between relative z-10">
+                            <span class="font-mono text-xs tracking-wider uppercase ${c.color}">Commitment: ${c.commitment}</span>
+                            <i class="fa-solid fa-rotate text-xs ${c.color} group-hover:rotate-90 transition-all" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Back Face -->
+                    <div class="flip-face flip-face-back glass-card-interactive bg-slate-900/95 border ${c.border} rounded-2xl overflow-hidden flex flex-col justify-between shadow-2xl" aria-hidden="true" inert>
+                      <div class="min-h-[6.5rem] pt-5 w-full relative overflow-hidden bg-gradient-to-br ${c.banner} via-slate-800/90 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[102px] pr-5 pb-2">
+                        <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                        <span class="font-display font-semibold text-2xl text-white block leading-tight relative z-10">${c.commitment}</span>
+                      </div>
+
+                      <div class="flex-1 flex flex-col justify-between relative">
+                        <div class="bare-badge-center w-16 h-16 rounded-2xl ${c.bg} ${c.border} border ${c.color} shadow-xl shadow-slate-950/80 backdrop-blur-md absolute -top-8 left-6 z-20" aria-hidden="true">
+                          <i class="${c.icon} fa-badge-icon"></i>
+                        </div>
+
+                        <div class="pl-[102px] pr-5 pt-2 min-h-[2.25rem] flex items-center relative z-10">
+                          <span class="inline-flex items-center py-1 px-3 rounded-full border ${c.pillStyle} font-mono text-xs leading-snug">
+                            Commitment for ${c.artifact}
+                          </span>
+                        </div>
+
+                        <div class="px-6 pb-5 pt-4 flex-1 flex flex-col justify-between relative overflow-hidden">
+                          <div class="absolute -bottom-6 -right-6 opacity-[0.06] ${c.color} pointer-events-none flex items-center justify-center" aria-hidden="true">
+                            <i class="${c.icon} fa-bg-icon"></i>
+                          </div>
+                          <p class="text-base text-slate-100 font-light leading-relaxed my-auto relative z-10">${c.backText}</p>
+                          <div class="flex items-center justify-between pt-4 mt-4 border-t border-white/10 relative z-10">
+                            <span class="text-xs font-mono text-slate-300">Flip back to ${c.artifact}</span>
+                            <i class="fa-solid fa-rotate-left text-xs ${c.color}" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <!-- SPRINT BURNDOWN & VELOCITY TELEMETRY -->
+          <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div class="glass-card-static rounded-2xl p-6 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h3 class="text-2xl font-display font-semibold text-white tracking-tight">Sprint Burndown Telemetry</h3>
+                  <p class="text-sm text-slate-300 font-light mt-0.5">Remaining work across a 10-Day Sprint</p>
+                </div>
+                <div>
+                  <label for="burndown-scenario" class="sr-only">Select Burndown Scenario</label>
+                  <select
+                    id="burndown-scenario"
+                    onchange="updateBurndownChart(this.value)"
+                    class="bg-slate-950 border border-purple-400/50 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-mono text-purple-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint cursor-pointer"
+                  >
+                    <option value="healthy">Healthy Empirical Flow</option>
+                    <option value="scope">Mid-Sprint Scope Creep</option>
+                    <option value="late">Delayed Testing Bottleneck</option>
+                  </select>
+                </div>
+              </div>
+              <div id="burndown-svg-container" class="w-full bg-slate-950/80 rounded-xl p-4 border border-slate-800"></div>
+              <p id="burndown-caption" aria-live="polite" class="text-sm sm:text-base text-slate-200 font-light leading-relaxed"></p>
+            </div>
+
+            <div class="glass-card-static rounded-2xl p-6 space-y-4">
+              <div>
+                <h3 class="text-2xl font-display font-semibold text-white tracking-tight">Historical Velocity Bar Chart</h3>
+                <p class="text-sm text-slate-300 font-light mt-0.5">Completed Story Points meeting Definition of Done</p>
+              </div>
+              <div class="w-full bg-slate-950/80 rounded-xl p-4 border border-slate-800">
+                <svg viewBox="0 0 360 200" role="img" aria-label="Bar chart showing completed Story Points across Sprints 1 to 5: S1 28, S2 34, S3 39, S4 37, S5 42, with an average of 36." class="w-full h-auto overflow-visible">
+                  <line x1="48" y1="20" x2="340" y2="20" stroke="#475569" stroke-opacity="0.35" stroke-dasharray="3 3"/>
+                  <line x1="48" y1="65" x2="340" y2="65" stroke="#B9A1FF" stroke-opacity="0.6" stroke-dasharray="4 4"/>
+                  <line x1="48" y1="110" x2="340" y2="110" stroke="#475569" stroke-opacity="0.35" stroke-dasharray="3 3"/>
+                  <line x1="48" y1="155" x2="340" y2="155" stroke="#94a3b8" stroke-opacity="0.4"/>
+                  <text x="42" y="24" text-anchor="end" fill="#cbd5e1" font-size="11" font-family="JetBrains Mono">50</text>
+                  <text x="42" y="69" text-anchor="end" fill="#B9A1FF" font-size="11" font-family="JetBrains Mono">Avg 36</text>
+                  <text x="42" y="114" text-anchor="end" fill="#cbd5e1" font-size="11" font-family="JetBrains Mono">20</text>
+                  <text x="42" y="158" text-anchor="end" fill="#cbd5e1" font-size="11" font-family="JetBrains Mono">0</text>
+
+                  ${[
+                    { label: "S1", pts: 28, x: 68 },
+                    { label: "S2", pts: 34, x: 122 },
+                    { label: "S3", pts: 39, x: 176 },
+                    { label: "S4", pts: 37, x: 230 },
+                    { label: "S5", pts: 42, x: 284 }
+                  ].map(b => {
+                    const h = (b.pts / 50) * 135;
+                    const y = 155 - h;
+                    return `
+                      <rect x="${b.x}" y="${y}" width="32" height="${h}" rx="4" fill="#7C3AED" stroke="#B9A1FF" stroke-width="1.2"/>
+                      <text x="${b.x + 16}" y="${y - 6}" text-anchor="middle" fill="#f8fafc" font-size="11" font-family="JetBrains Mono">${b.pts}</text>
+                      <text x="${b.x + 16}" y="176" text-anchor="middle" fill="#e2e8f0" font-size="12" font-family="JetBrains Mono">${b.label}</text>
+                    `;
+                  }).join('')}
+                </svg>
+              </div>
+              <p class="text-sm sm:text-base text-slate-200 font-light leading-relaxed">
+                <strong>Key Rule:</strong> Velocity is an optional internal forecasting metric for Developers—never a management productivity KPI and never used to compare teams.
+              </p>
+            </div>
+          </section>
+        `
+      },
+      {
+        id: 5,
+        code: "Module 5 of 7",
+        shortCode: "Mod 05 / 07",
+        title: "2020 Shifts, Undone Work & Scaling",
+        Render: () => `
+          <!-- OPEN-CANVAS b.a.r.e. | FORM MODULE HEADER -->
+          <section class="text-left max-w-3xl animate-fade-in-up">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white mb-3 leading-tight">
+              Undone Work, Refinement &amp; <span class="text-gradient animate-gradient-x">Scaling Laws</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-display font-light text-slate-200 mb-6 italic tracking-wide border-l-2 border-accent-cyan pl-4">
+              "If an item does not meet the Definition of Done, it cannot be released or presented."
+            </p>
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+              Certification exams heavily test the boundary between optional complementary practices (Story Points, Burndown Charts, User Stories) and mandatory 2020 Scrum Guide rules.
+            </p>
+          </section>
+
+          <!-- 4 BOUNDARY & SCALING CARDS -->
+          <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            ${[
+              {
+                title: "Undone Work at Sprint's End",
+                pill: "Definition of Done Gate",
+                badgeIcon: "fa-solid fa-rotate-left",
+                bgIcon: "fa-solid fa-rotate-left",
+                color: "text-rose-400",
+                bg: "bg-rose-400/10",
+                border: "border-rose-400/25",
+                banner: "from-rose-400/30",
+                pillStyle: "border-rose-400/40 text-rose-300 bg-slate-950/90",
+                rule: "If a Product Backlog item does not meet the Definition of Done, it cannot be released or even presented at the Sprint Review. Instead, it returns to the Product Backlog for future consideration. Never 'partially credit' Story Points."
+              },
+              {
+                title: "Multiple Teams on One Product",
+                pill: "Shared Backlog & DoD",
+                badgeIcon: "fa-solid fa-diagram-project",
+                bgIcon: "fa-solid fa-diagram-project",
+                color: "text-teal-400",
+                bg: "bg-teal-400/10",
+                border: "border-teal-400/25",
+                banner: "from-teal-400/30",
+                pillStyle: "border-teal-400/40 text-teal-300 bg-slate-950/90",
+                rule: "If multiple Scrum Teams work together on the same product, they must share ONE Product Backlog, ONE Product Goal, and ONE Product Owner—and they must mutually define and comply with the same Definition of Done."
+              },
+              {
+                title: "Product Backlog Refinement",
+                pill: "Ongoing Decomposition",
+                badgeIcon: "fa-solid fa-filter",
+                bgIcon: "fa-solid fa-filter",
+                color: "text-sky-400",
+                bg: "bg-sky-400/10",
+                border: "border-sky-400/25",
+                banner: "from-sky-400/30",
+                pillStyle: "border-sky-400/40 text-sky-300 bg-slate-950/90",
+                rule: "Refinement is the ongoing activity of breaking down and further defining PBIs into smaller, more precise items. In 2020, the old '10% capacity rule' was removed—refinement simply consumes as much time as needed."
+              },
+              {
+                title: "No 'Sprint 0' or 'Hardening'",
+                pill: "Continuous Value Delivery",
+                badgeIcon: "fa-solid fa-ban",
+                bgIcon: "fa-solid fa-ban",
+                color: "text-amber-400",
+                bg: "bg-amber-400/10",
+                border: "border-amber-400/25",
+                banner: "from-amber-400/30",
+                pillStyle: "border-amber-400/40 text-amber-200 bg-slate-950/90",
+                rule: "Scrum has no concept of 'Sprint 0', 'Architecture Sprint', or 'Release/Hardening Sprint'. Every single Sprint must produce at least one usable, Done Increment."
+              }
+            ].map(card => `
+              <div class="glass-card-static rounded-2xl flex flex-col overflow-hidden relative">
+                <div class="min-h-[7rem] pt-6 w-full relative overflow-hidden bg-gradient-to-br ${card.banner} via-slate-800/80 to-slate-900 border-b border-white/10 flex flex-col justify-end pl-[102px] pr-6 pb-2">
+                  <div class="absolute inset-0 bg-grid-pattern mix-blend-overlay opacity-50 pointer-events-none"></div>
+                  <div class="absolute -bottom-8 -right-8 opacity-[0.06] ${card.color} flex items-center justify-center pointer-events-none" aria-hidden="true">
+                    <i class="${card.bgIcon} fa-bg-icon"></i>
+                  </div>
+                  <h3 class="text-2xl font-display font-semibold text-white tracking-tight leading-tight relative z-10">${card.title}</h3>
+                </div>
+                <div class="flex-1 flex flex-col relative bg-slate-900/40">
+                  <div class="bare-badge-center w-16 h-16 rounded-2xl ${card.bg} ${card.border} border absolute -top-8 left-6 shadow-xl shadow-slate-950/80 backdrop-blur-md ${card.color} z-20" aria-hidden="true">
+                    <i class="${card.badgeIcon} fa-badge-icon"></i>
+                  </div>
+                  <div class="pl-[102px] pr-6 pt-2 min-h-[2.25rem] flex items-center">
+                    <span class="inline-flex items-center py-1 px-3 rounded-full border ${card.pillStyle} font-mono text-xs leading-snug">
+                      ${card.pill}
+                    </span>
+                  </div>
+                  <div class="p-6 pt-5">
+                    <p class="text-base text-slate-200 font-light leading-relaxed">${card.rule}</p>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </section>
+        `
+      },
+      {
+        id: 6,
+        code: "Module 6 of 7",
+        shortCode: "Mod 06 / 07",
+        title: "Certification Exam Scenario Lab",
+        Render: () => `
+          <!-- OPEN-CANVAS b.a.r.e. | FORM MODULE HEADER -->
+          <section class="flex flex-col md:flex-row md:items-end justify-between gap-6 animate-fade-in-up">
+            <div class="text-left max-w-3xl">
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white mb-3 leading-tight">
+                Certification Exam <span class="text-gradient animate-gradient-x">Scenario Lab</span>
+              </h1>
+              <p class="text-xl md:text-2xl font-display font-light text-slate-200 mb-6 italic tracking-wide border-l-2 border-accent-cyan pl-4">
+                "Real-world situational questions verifying strict 2020 Scrum Guide compliance."
+              </p>
+              <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+                Test your instincts against three classic certification exam scenarios covering mid-Sprint scope negotiation, undone work at Sprint Review, and multi-team scaling. Your answers are saved automatically.
+              </p>
+            </div>
+
+            <!-- Explicit Quiz Progress & Reset Control -->
+            <div class="glass-card-static rounded-2xl p-4 flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between gap-3 shrink-0">
+              <div id="quiz-lab-summary" aria-live="polite" class="font-mono text-xs sm:text-sm text-pnix-mint">
+                0 of 3 scenarios answered
+              </div>
+              <button
+                type="button"
+                onclick="resetQuizProgress()"
+                class="px-3.5 py-2 rounded-xl border border-white/15 bg-slate-800/80 hover:bg-slate-800 hover:border-rose-400/50 text-xs font-mono text-slate-200 hover:text-rose-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint"
+              >
+                Reset Quiz Answers
+              </button>
+            </div>
+          </section>
+
+          <section class="space-y-8">
+            ${EXAM_QUESTIONS.map((q, qIdx) => `
+              <div class="glass-card-static rounded-2xl overflow-hidden">
+                <div class="p-6 md:p-8 space-y-5">
+                  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+                    <h2 class="text-xl sm:text-2xl font-display font-semibold text-white">Scenario 0${qIdx + 1}: ${q.domain}</h2>
+                    <span id="q-status-pill-${qIdx}" class="px-3 py-1 rounded-full bg-slate-800 border border-white/15 font-mono text-xs text-slate-300">
+                      Unanswered
+                    </span>
+                  </div>
+                  <p class="text-base sm:text-lg text-slate-100 font-light leading-relaxed">${q.prompt}</p>
+                  <div class="space-y-3" role="group" aria-label="Answer options for Scenario ${qIdx + 1}">
+                    ${q.options.map((opt, oIdx) => `
+                      <button
+                        type="button"
+                        onclick="evaluateScenario(${qIdx}, ${oIdx})"
+                        id="q-${qIdx}-opt-${oIdx}"
+                        aria-pressed="false"
+                        class="w-full text-left p-4 rounded-xl border border-white/15 bg-slate-900/75 hover:border-accent-purple hover:bg-slate-800/85 text-base text-slate-200 font-light transition-all flex items-start justify-between gap-3.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint"
+                      >
+                        <span class="flex items-start gap-3.5">
+                          <span class="font-mono text-purple-300 font-semibold">${String.fromCharCode(65 + oIdx)}.</span>
+                          <span class="leading-relaxed">${opt}</span>
+                        </span>
+                        <span id="q-${qIdx}-badge-${oIdx}" class="hidden shrink-0 px-2.5 py-1 rounded-lg font-mono text-xs font-medium"></span>
+                      </button>
+                    `).join('')}
+                  </div>
+                  <div
+                    id="q-feedback-${qIdx}"
+                    role="status"
+                    aria-live="polite"
+                    class="hidden p-5 rounded-xl bg-slate-950 border border-purple-400/40 text-base text-slate-200 font-light space-y-2.5 leading-relaxed"
+                  ></div>
+                </div>
+              </div>
+            `).join('')}
+          </section>
+        `
+      }
+    ];
+
+    /* =====================================================================
+       STATE PERSISTENCE ENGINE (LocalStorage with Graceful Memory Fallback)
+       ===================================================================== */
+    SYLLABUS_MODULES.push({id:7,code:"Module 7 of 7",shortCode:"Mod 07 / 07",title:"Anti-Pattern Diagnostic",Render:()=>"<section class=\"mb-8\"><p class=\"text-purple-300 font-mono text-xs uppercase tracking-widest mb-3\">PNiXStudio / Practice</p><h1 class=\"font-display text-3xl sm:text-5xl text-white mb-3\">Anti-Pattern <span class=\"text-gradient\">Diagnostic</span></h1><p class=\"text-slate-300 mb-5\">Put the guide into practice. Explore five workplace scenarios, get immediate feedback, and inspect the Scrum principle behind each choice.</p><button class=\"px-4 py-2 rounded-xl border border-purple-400/40 bg-purple-500/10\" onclick=\"engine_resetAssessment()\">Reset diagnostic</button></section>\n\n    <!-- Top Ribbon: Progress & Accountability Selector -->\n    <section class=\"mb-8\">\n      <div class=\"glass-panel rounded-2xl p-5 sm:p-6 shadow-inner-glow\">\n        <div class=\"flex flex-col md:flex-row md:items-center md:justify-between gap-4\">\n          \n          <!-- Progress Meta -->\n          <div>\n            <div class=\"flex items-center gap-2 mb-2\">\n              <span id=\"current-badge\" class=\"px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide uppercase bg-purple-500/20 text-purple-300 border border-purple-500/30\">\n                Scenario <span id=\"idx-counter\">1</span> of <span id=\"total-counter\">5</span>\n              </span>\n              <span id=\"score-counter\" class=\"text-xs text-amber-400/90 font-mono flex items-center gap-1 font-semibold\">\n                <i data-lucide=\"zap\" class=\"w-3.5 h-3.5\"></i> <span id=\"current-score\">0</span> pts\n              </span>\n            </div>\n            <h1 class=\"text-lg sm:text-xl font-bold text-white tracking-tight\">Interactive Scenario Assessment</h1>\n          </div>\n\n          <!-- Accountability Filter Tabs -->\n          <div class=\"flex flex-wrap items-center gap-1.5 p-1 bg-black/40 rounded-xl border border-white/10\">\n            <button onclick=\"engine_setFilter('ALL')\" data-filter=\"ALL\" class=\"filter-tab px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white transition-all bg-purple-600/30 text-purple-200 border border-purple-500/40\">All Roles</button>\n            <button onclick=\"engine_setFilter('Product Owner')\" data-filter=\"Product Owner\" class=\"filter-tab px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all\">Product Owner</button>\n            <button onclick=\"engine_setFilter('Scrum Master')\" data-filter=\"Scrum Master\" class=\"filter-tab px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all\">Scrum Master</button>\n            <button onclick=\"engine_setFilter('Developers')\" data-filter=\"Developers\" class=\"filter-tab px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all\">Developers</button>\n          </div>\n        </div>\n\n        <!-- Progress Bar -->\n        <div class=\"w-full bg-slate-800/80 rounded-full h-1.5 mt-5 overflow-hidden border border-white/5\">\n          <div id=\"progress-bar\" class=\"bg-gradient-to-r from-purple-600 via-purple-400 to-amber-400 h-1.5 rounded-full transition-all duration-500\" style=\"width: 20%;\"></div>\n        </div>\n      </div>\n    </section>\n\n    <!-- Quiz Core Interactive Wrapper -->\n    <div id=\"quiz-container\" class=\"space-y-6\">\n\n      <!-- Scenario Brief Card -->\n      <section class=\"glass-panel rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl\">\n        <div class=\"absolute -right-16 -top-16 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none\"></div>\n\n        <div class=\"flex items-center justify-between gap-4 mb-4\">\n          <div class=\"flex items-center gap-2\">\n            <span id=\"scenario-accountability-pill\" class=\"text-xs font-mono font-medium px-3 py-1 rounded-md bg-purple-950/80 text-purple-300 border border-purple-600/40\">\n              Accountability: Developers\n            </span>\n            <span id=\"scenario-theme-pill\" class=\"text-xs text-slate-400 font-mono hidden sm:inline-block\">\n              #SprintBacklogOwnership\n            </span>\n          </div>\n          <span id=\"scenario-difficulty\" class=\"text-xs font-semibold px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20\">\n            Real-World Incident\n          </span>\n        </div>\n\n        <h2 id=\"scenario-title\" class=\"text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight\">\n          Scenario Title Loading...\n        </h2>\n\n        <p id=\"scenario-description\" class=\"text-slate-300 text-base sm:text-[17px] leading-relaxed mb-6 font-normal\">\n          Scenario contextual breakdown is being loaded...\n        </p>\n\n        <!-- Question Prompt -->\n        <div class=\"border-t border-white/10 pt-4 flex items-center gap-2 text-purple-300 text-sm font-medium\">\n          <i data-lucide=\"help-circle\" class=\"w-4 h-4 text-purple-400\"></i>\n          <span id=\"scenario-question\">According to the 2020 Scrum Guide, what is the correct resolution?</span>\n        </div>\n      </section>\n\n      <!-- Option Choices -->\n      <section class=\"space-y-3\" id=\"options-container\">\n        <!-- Dynamic Option Cards Rendered Here -->\n      </section>\n\n      <!-- Feedback / 2020 Scrum Guide Breakdown Drawer -->\n      <section id=\"feedback-drawer\" class=\"hidden transition-all duration-500\">\n        <div id=\"feedback-card\" class=\"rounded-2xl p-6 sm:p-8 border glass-panel shadow-2xl space-y-5\">\n          \n          <div class=\"flex items-start justify-between gap-4\">\n            <div class=\"flex items-center gap-3\">\n              <div id=\"feedback-icon-box\" class=\"w-10 h-10 rounded-xl flex items-center justify-center shrink-0\">\n                <i id=\"feedback-icon\" data-lucide=\"check-circle-2\" class=\"w-6 h-6\"></i>\n              </div>\n              <div>\n                <h3 id=\"feedback-verdict\" class=\"text-lg font-bold text-white tracking-tight\">Outcome Assessment</h3>\n                <p id=\"feedback-subhead\" class=\"text-xs text-slate-400 font-mono\">2020 Scrum Guide Principle Analysis</p>\n              </div>\n            </div>\n\n            <!-- Score Award Tag -->\n            <div id=\"feedback-points-tag\" class=\"px-3 py-1 rounded-full text-xs font-mono font-bold\">\n              +100 Points\n            </div>\n          </div>\n\n          <!-- Why this works / fails -->\n          <div class=\"bg-black/30 rounded-xl p-4 border border-white/5 space-y-2\">\n            <h4 class=\"text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5\">\n              <i data-lucide=\"file-text\" class=\"w-3.5 h-3.5 text-purple-400\"></i> Why This Choice Matters\n            </h4>\n            <p id=\"feedback-reasoning\" class=\"text-sm text-slate-200 leading-relaxed font-normal\">\n              Explanation text...\n            </p>\n          </div>\n\n          <!-- Dual Pillar: Principle vs Anti-Pattern -->\n          <div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\">\n            <!-- Scrum Guide Principle -->\n            <div class=\"p-4 rounded-xl bg-purple-950/20 border border-purple-500/20 space-y-1.5\">\n              <div class=\"text-xs font-mono font-semibold text-purple-400 flex items-center gap-1.5 uppercase\">\n                <i data-lucide=\"compass\" class=\"w-3.5 h-3.5\"></i> Scrum Guide 2020 Standard\n              </div>\n              <p id=\"feedback-principle\" class=\"text-xs text-purple-200/90 leading-relaxed font-normal\">\n                Citation text...\n              </p>\n            </div>\n\n            <!-- Anti-Pattern Flagged -->\n            <div class=\"p-4 rounded-xl bg-rose-950/20 border border-rose-500/20 space-y-1.5\">\n              <div class=\"text-xs font-mono font-semibold text-rose-400 flex items-center gap-1.5 uppercase\">\n                <i data-lucide=\"alert-triangle\" class=\"w-3.5 h-3.5\"></i> Anti-Pattern Trap Flagged\n              </div>\n              <p id=\"feedback-antipattern\" class=\"text-xs text-rose-200/90 leading-relaxed font-normal\">\n                Anti-pattern identification...\n              </p>\n            </div>\n          </div>\n\n          <!-- Next Button / Navigation -->\n          <div class=\"flex justify-end pt-3\">\n            <button id=\"next-btn\" onclick=\"engine_nextScenario()\" class=\"w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-sm font-semibold tracking-wide shadow-lg shadow-purple-900/30 flex items-center justify-center gap-2 transition-all\">\n              <span>Next Scenario</span>\n              <i data-lucide=\"arrow-right\" class=\"w-4 h-4\"></i>\n            </button>\n          </div>\n\n        </div>\n      </section>\n\n    </div>\n\n    <!-- Final Diagnostic Summary Screen (Hidden Initially) -->\n    <section id=\"results-screen\" class=\"hidden glass-panel rounded-2xl p-6 sm:p-10 shadow-2xl space-y-8 animate-fade-in\">\n      \n      <!-- Performance Header -->\n      <div class=\"text-center space-y-3\">\n        <div class=\"inline-flex items-center justify-center p-3 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-purple-400 mb-2\">\n          <i data-lucide=\"award\" class=\"w-10 h-10\"></i>\n        </div>\n        <h2 class=\"text-2xl sm:text-3xl font-extrabold text-white tracking-tight\">Scrum Anti-Pattern Diagnostic Complete</h2>\n        <p class=\"text-slate-400 text-sm max-w-lg mx-auto\">\n          Your alignment score against the <strong class=\"text-slate-200\">2020 Scrum Guide</strong> principles has been synthesized.\n        </p>\n      </div>\n\n      <!-- Score Metrics Overview -->\n      <div class=\"grid grid-cols-1 sm:grid-cols-3 gap-4\">\n        \n        <div class=\"p-5 rounded-xl bg-black/40 border border-white/10 text-center\">\n          <div class=\"text-xs font-mono uppercase text-slate-400 mb-1\">Mastery Score</div>\n          <div id=\"final-score-percent\" class=\"text-3xl font-extrabold text-white\">80%</div>\n          <div id=\"final-points-label\" class=\"text-xs text-purple-400 font-mono mt-1\">400 / 500 Pts</div>\n        </div>\n\n        <div class=\"p-5 rounded-xl bg-black/40 border border-white/10 text-center\">\n          <div class=\"text-xs font-mono uppercase text-slate-400 mb-1\">Archetype Profile</div>\n          <div id=\"final-archetype\" class=\"text-xl font-bold text-amber-300\">Pragmatic Agilist</div>\n          <div class=\"text-xs text-slate-400 font-normal mt-1\">Guide 2020 Compliant</div>\n        </div>\n\n        <div class=\"p-5 rounded-xl bg-black/40 border border-white/10 text-center\">\n          <div class=\"text-xs font-mono uppercase text-slate-400 mb-1\">Anti-Patterns Avoided</div>\n          <div id=\"final-antipattern-count\" class=\"text-3xl font-extrabold text-emerald-400\">4 / 5</div>\n          <div class=\"text-xs text-slate-400 font-normal mt-1\">Clean Structural Form</div>\n        </div>\n\n      </div>\n\n      <!-- Anti-Pattern Trap Diagnostic Logs -->\n      <div class=\"space-y-3\">\n        <h3 class=\"text-sm font-semibold uppercase tracking-wider text-slate-300 flex items-center gap-2\">\n          <i data-lucide=\"radar\" class=\"w-4 h-4 text-purple-400\"></i> Diagnostic Breakdown & Corrective Guide\n        </h3>\n        \n        <div id=\"diagnostic-items-list\" class=\"space-y-3\">\n          <!-- Populated dynamically via JS -->\n        </div>\n      </div>\n\n      <!-- Action Footer -->\n      <div class=\"flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10\">\n        <div class=\"text-xs text-slate-400 text-center sm:text-left\">\n          Progress and decisions are saved locally on this browser.\n        </div>\n        <div class=\"flex items-center gap-3 w-full sm:w-auto\">\n          <button onclick=\"engine_restartQuiz()\" class=\"w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-purple-900/30 transition-all\">\n            <i data-lucide=\"refresh-cw\" class=\"w-4 h-4\"></i>\n            <span>Retake Assessment</span>\n          </button>\n        </div>\n      </div>\n\n    </section>\n\n  "});
+    const defaultState = () => ({
+      activeModuleIndex: 0,
+      visitedModules: [0],
+      quizAnswers: {},
+      burndownMode: 'healthy'
+    });
+
+    let appState = loadState();
+    let activeModuleIndex = appState.activeModuleIndex;
+    let lastModalTrigger = null;
+    let lastDrawerTrigger = null;
+
+    function loadState() {
+      try {
+        const raw = window.localStorage.getItem(STORAGE_KEY);
+        if (!raw) return defaultState();
+        const parsed = JSON.parse(raw);
+        const idx = typeof parsed.activeModuleIndex === 'number'
+          ? Math.max(0, Math.min(SYLLABUS_MODULES.length - 1, parsed.activeModuleIndex))
+          : 0;
+        const visited = Array.isArray(parsed.visitedModules)
+          ? parsed.visitedModules.filter(n => typeof n === 'number' && n >= 0 && n < SYLLABUS_MODULES.length)
+          : [idx];
+        if (!visited.includes(idx)) visited.push(idx);
+        return {
+          activeModuleIndex: idx,
+          visitedModules: visited,
+          quizAnswers: (parsed.quizAnswers && typeof parsed.quizAnswers === 'object') ? parsed.quizAnswers : {},
+          burndownMode: ['healthy', 'scope', 'late'].includes(parsed.burndownMode) ? parsed.burndownMode : 'healthy'
+        };
+      } catch (e) {
+        return defaultState();
+      }
+    }
+
+    function saveState() {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {
+        // Graceful fallback when storage is unavailable or restricted
+      }
+    }
+
+    function prefersReducedMotion() {
+      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    /* =====================================================================
+       KEYBOARD-ACCESSIBLE FLIP CARD ENGINE
+       Ensures only the visible face is exposed to assistive technology
+       ===================================================================== */
+    function toggleFlipCard(sceneEl) {
+      if (!sceneEl) return;
+      const inner = sceneEl.querySelector('.flip-card-inner');
+      const front = sceneEl.querySelector('.flip-face-front');
+      const back = sceneEl.querySelector('.flip-face-back');
+      if (!inner || !front || !back) return;
+
+      const isFlipped = inner.classList.toggle('is-flipped');
+      sceneEl.setAttribute('aria-pressed', isFlipped ? 'true' : 'false');
+
+      if (isFlipped) {
+        front.setAttribute('aria-hidden', 'true');
+        front.setAttribute('inert', '');
+        back.setAttribute('aria-hidden', 'false');
+        back.removeAttribute('inert');
+      } else {
+        front.setAttribute('aria-hidden', 'false');
+        front.removeAttribute('inert');
+        back.setAttribute('aria-hidden', 'true');
+        back.setAttribute('inert', '');
+      }
+    }
+
+    function handleFlipKeydown(event, sceneEl) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleFlipCard(sceneEl);
+      }
+    }
+
+    /* =====================================================================
+       ACCESSIBLE ACCORDION CONTROLLER
+       ===================================================================== */
+    function toggleAccordion(id, btnEl) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById('icon-' + id);
+      if (!el) return;
+      const isHidden = el.classList.toggle('hidden');
+      const isExpanded = !isHidden;
+      if (btnEl) {
+        btnEl.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      }
+      if (icon) {
+        icon.classList.toggle('rotate-180', isExpanded);
+      }
+    }
+
+    /* =====================================================================
+       MODAL & DRAWER FOCUS TRAP + ACCESSIBILITY CONTROLLERS
+       ===================================================================== */
+    function getFocusableElements(container) {
+      if (!container) return [];
+      return Array.from(
+        container.querySelectorAll(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter(el => !el.closest('[inert]') && !el.closest('.hidden'));
+    }
+
+    function trapFocus(event, container) {
+      if (event.key !== 'Tab') return;
+      const focusables = getFocusableElements(container);
+      if (focusables.length === 0) {
+        event.preventDefault();
+        return;
+      }
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    function openDiagramModal(pillarIdx, triggerEl) {
+      const p = PILLAR_DATA[pillarIdx];
+      if (!p) return;
+
+      lastModalTrigger = triggerEl || document.activeElement;
+
+      document.getElementById('modal-pillar-title').textContent = p.name;
+      document.getElementById('modal-pillar-icon').className = `${p.badgeIcon} text-xl ${p.color}`;
+      document.getElementById('modal-pillar-icon-wrap').className = `bare-badge-center w-12 h-12 rounded-xl border ${p.bg} ${p.border}`;
+      document.getElementById('modal-diagram-subtitle').className = `font-mono text-xs sm:text-sm tracking-wider uppercase mb-4 ${p.color}`;
+      document.getElementById('modal-diagram-subtitle').textContent = p.diagramTitle;
+      document.getElementById('modal-diagram-body').innerHTML = p.diagramHtml(true);
+      document.getElementById('modal-trap-bar').className = `absolute top-0 left-0 w-1.5 h-full ${p.barColor}`;
+      document.getElementById('modal-trap-heading').className = `font-semibold text-base mb-1.5 ${p.color}`;
+      document.getElementById('modal-pillar-desc').textContent = p.trap;
+
+      const modal = document.getElementById('diagram-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modal.removeAttribute('aria-hidden');
+      modal.removeAttribute('inert');
+
+      requestAnimationFrame(() => {
+        modal.classList.add('active');
+        const closeBtn = document.getElementById('modal-close-btn');
+        if (closeBtn) closeBtn.focus();
+      });
+
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDiagramModal() {
+      const modal = document.getElementById('diagram-modal');
+      if (!modal || modal.classList.contains('hidden')) return;
+
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.setAttribute('inert', '');
+      document.body.style.overflow = '';
+
+      const finishClose = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') {
+          lastModalTrigger.focus();
+        }
+      };
+
+      if (prefersReducedMotion()) {
+        finishClose();
+      } else {
+        setTimeout(finishClose, 220);
+      }
+    }
+
+    const drawer = document.getElementById('nav-drawer');
+    const backdrop = document.getElementById('drawer-backdrop');
+    const drawerOpenBtn = document.getElementById('drawer-open-btn');
+
+    function openDrawer() {
+      lastDrawerTrigger = document.activeElement;
+
+      backdrop.classList.remove('hidden');
+      drawer.classList.remove('hidden');
+      drawer.classList.add('flex');
+      drawer.removeAttribute('aria-hidden');
+      drawer.removeAttribute('inert');
+      drawerOpenBtn.setAttribute('aria-expanded', 'true');
+
+      requestAnimationFrame(() => {
+        backdrop.classList.remove('opacity-0');
+        drawer.classList.remove('-translate-x-full');
+        const closeBtn = document.getElementById('drawer-close-btn');
+        if (closeBtn) closeBtn.focus();
+      });
+    }
+
+    function closeDrawer(restoreFocus = true) {
+      if (drawer.classList.contains('hidden')) return;
+
+      backdrop.classList.add('opacity-0');
+      drawer.classList.add('-translate-x-full');
+      drawer.setAttribute('aria-hidden', 'true');
+      drawer.setAttribute('inert', '');
+      drawerOpenBtn.setAttribute('aria-expanded', 'false');
+
+      const finishClose = () => {
+        backdrop.classList.add('hidden');
+        drawer.classList.add('hidden');
+        drawer.classList.remove('flex');
+        if (restoreFocus && lastDrawerTrigger && typeof lastDrawerTrigger.focus === 'function') {
+          lastDrawerTrigger.focus();
+        }
+      };
+
+      if (prefersReducedMotion()) {
+        finishClose();
+      } else {
+        setTimeout(finishClose, 220);
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('diagram-modal');
+      const isModalOpen = modal && !modal.classList.contains('hidden');
+      const isDrawerOpen = drawer && !drawer.classList.contains('hidden');
+
+      if (e.key === 'Escape') {
+        if (isModalOpen) {
+          e.preventDefault();
+          closeDiagramModal();
+        } else if (isDrawerOpen) {
+          e.preventDefault();
+          closeDrawer(true);
+        }
+        return;
+      }
+
+      if (isModalOpen) {
+        trapFocus(e, modal);
+      } else if (isDrawerOpen) {
+        trapFocus(e, drawer);
+      }
+    });
+
+    /* =====================================================================
+       BURNDOWN TELEMETRY ENGINE
+       ===================================================================== */
+    function updateBurndownChart(mode) {
+      const validMode = ['healthy', 'scope', 'late'].includes(mode) ? mode : 'healthy';
+      appState.burndownMode = validMode;
+      saveState();
+
+      const selectEl = document.getElementById('burndown-scenario');
+      if (selectEl && selectEl.value !== validMode) {
+        selectEl.value = validMode;
+      }
+
+      const container = document.getElementById('burndown-svg-container');
+      const caption = document.getElementById('burndown-caption');
+      if (!container || !caption) return;
+
+      const datasets = {
+        healthy: {
+          label: "Healthy empirical flow burndown chart showing steady completion from 100% on Day 1 to 0% on Day 10.",
+          points: [100, 88, 79, 68, 55, 48, 36, 25, 14, 5, 0],
+          color: "#B9A1FF",
+          text: "<strong>Healthy Empirical Flow:</strong> Work is completed steadily as small Product Backlog items meet the Definition of Done throughout the Sprint."
+        },
+        scope: {
+          label: "Mid-Sprint scope discovery burndown chart showing remaining work rising on Day 4 before trending down to 0% on Day 10.",
+          points: [100, 90, 82, 75, 96, 84, 66, 48, 30, 15, 0],
+          color: "#A855F7",
+          text: "<strong>Mid-Sprint Scope Discovery:</strong> On Day 4, newly discovered technical complexity increased remaining work before the Developers adapted their plan."
+        },
+        late: {
+          label: "Delayed testing bottleneck burndown chart showing remaining work staying nearly flat until Day 8 before dropping sharply.",
+          points: [100, 98, 96, 95, 92, 90, 88, 85, 80, 45, 0],
+          color: "#EA580C",
+          text: "<strong>Delayed Testing Bottleneck:</strong> Work stays flat until the final two days because testing was deferred to the end instead of finishing increments continuously."
+        }
+      };
+
+      const active = datasets[validMode];
+      const coords = active.points.map((val, idx) => {
+        const x = 48 + (idx * 29);
+        const y = 155 - ((val / 100) * 130);
+        return `${x},${y}`;
+      }).join(' ');
+
+      container.innerHTML = `
+        <svg viewBox="0 0 360 190" role="img" aria-label="${active.label}" class="w-full h-auto overflow-visible">
+          <line x1="48" y1="25" x2="338" y2="25" stroke="#475569" stroke-opacity="0.3" stroke-dasharray="3 3"/>
+          <line x1="48" y1="90" x2="338" y2="90" stroke="#475569" stroke-opacity="0.3" stroke-dasharray="3 3"/>
+          <line x1="48" y1="155" x2="338" y2="155" stroke="#94a3b8" stroke-opacity="0.4"/>
+          <text x="42" y="29" text-anchor="end" fill="#cbd5e1" font-size="11" font-family="JetBrains Mono">100%</text>
+          <text x="42" y="94" text-anchor="end" fill="#cbd5e1" font-size="11" font-family="JetBrains Mono">50%</text>
+          <text x="42" y="158" text-anchor="end" fill="#cbd5e1" font-size="11" font-family="JetBrains Mono">0%</text>
+
+          <line x1="48" y1="25" x2="338" y2="155" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5 5"/>
+          <polyline fill="none" stroke="${active.color}" stroke-width="3" points="${coords}" />
+          ${active.points.map((val, idx) => {
+            const x = 48 + (idx * 29);
+            const y = 155 - ((val / 100) * 130);
+            return `<circle cx="${x}" cy="${y}" r="3.5" fill="#020617" stroke="${active.color}" stroke-width="2"/>`;
+          }).join('')}
+          <text x="48" y="176" fill="#e2e8f0" font-size="11" font-family="JetBrains Mono">Day 1</text>
+          <text x="193" y="176" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="JetBrains Mono">Day 5</text>
+          <text x="338" y="176" text-anchor="end" fill="#e2e8f0" font-size="11" font-family="JetBrains Mono">Day 10</text>
+        </svg>
+      `;
+      caption.innerHTML = active.text;
+    }
+
+    /* =====================================================================
+       SCENARIO LAB QUIZ ENGINE (Text + Color Feedback & State Persistence)
+       ===================================================================== */
+    function getQuizStats() {
+      const answeredIndices = Object.keys(appState.quizAnswers)
+        .map(k => Number(k))
+        .filter(k => !Number.isNaN(k) && k >= 0 && k < EXAM_QUESTIONS.length);
+      let correctCount = 0;
+      answeredIndices.forEach(qIdx => {
+        if (appState.quizAnswers[qIdx] === EXAM_QUESTIONS[qIdx].correct) {
+          correctCount += 1;
+        }
+      });
+      return {
+        answeredCount: answeredIndices.length,
+        correctCount,
+        total: EXAM_QUESTIONS.length
+      };
+    }
+
+    function applyScenarioState(qIdx, selectedIdx) {
+      const q = EXAM_QUESTIONS[qIdx];
+      const feedback = document.getElementById(`q-feedback-${qIdx}`);
+      const statusPill = document.getElementById(`q-status-pill-${qIdx}`);
+      if (!q || !feedback) return;
+
+      const isRight = selectedIdx === q.correct;
+      const selectedLetter = String.fromCharCode(65 + selectedIdx);
+      const correctLetter = String.fromCharCode(65 + q.correct);
+
+      if (statusPill) {
+        statusPill.className = isRight
+          ? "px-3 py-1 rounded-full bg-emerald-400/15 border border-emerald-400/40 font-mono text-xs text-emerald-300"
+          : "px-3 py-1 rounded-full bg-rose-500/15 border border-rose-400/40 font-mono text-xs text-rose-300";
+        statusPill.textContent = isRight ? "Answered • Correct" : "Answered • Review Needed";
+      }
+
+      q.options.forEach((_, idx) => {
+        const btn = document.getElementById(`q-${qIdx}-opt-${idx}`);
+        const badge = document.getElementById(`q-${qIdx}-badge-${idx}`);
+        if (!btn || !badge) return;
+
+        const isSelected = idx === selectedIdx;
+        btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+
+        btn.className = "w-full text-left p-4 rounded-xl border text-base transition-all flex items-start justify-between gap-3.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint ";
+
+        if (idx === q.correct && isSelected) {
+          btn.className += "border-emerald-400 bg-emerald-400/15 text-white font-normal";
+          badge.className = "shrink-0 px-2.5 py-1 rounded-lg font-mono text-xs font-medium bg-emerald-400/20 border border-emerald-400/40 text-emerald-200";
+          badge.textContent = "✓ Selected • Correct";
+        } else if (idx === q.correct && !isSelected) {
+          btn.className += "border-emerald-400/80 bg-emerald-400/10 text-white font-normal";
+          badge.className = "shrink-0 px-2.5 py-1 rounded-lg font-mono text-xs font-medium bg-emerald-400/15 border border-emerald-400/35 text-emerald-200";
+          badge.textContent = "✓ Correct Answer";
+        } else if (isSelected && idx !== q.correct) {
+          btn.className += "border-rose-500 bg-rose-500/15 text-slate-100 font-normal";
+          badge.className = "shrink-0 px-2.5 py-1 rounded-lg font-mono text-xs font-medium bg-rose-500/20 border border-rose-400/40 text-rose-200";
+          badge.textContent = "✕ Your Choice • Incorrect";
+        } else {
+          btn.className += "border-white/10 bg-slate-900/40 text-slate-400 font-light";
+          badge.className = "hidden";
+          badge.textContent = "";
+        }
+      });
+
+      feedback.classList.remove('hidden');
+      feedback.innerHTML = `
+        <div class="font-mono text-xs sm:text-sm font-semibold ${isRight ? 'text-emerald-300' : 'text-rose-300'}">
+          ${isRight
+            ? `✓ Correct (Option ${selectedLetter}) — 2020 Scrum Guide Standard`
+            : `✕ Not Quite (You selected Option ${selectedLetter}; Correct Answer is Option ${correctLetter})`
+          }
+        </div>
+        <div class="text-sm sm:text-base text-slate-200 leading-relaxed">${q.breakdown}</div>
+      `;
+    }
+
+    function evaluateScenario(qIdx, selectedIdx) {
+      appState.quizAnswers[qIdx] = selectedIdx;
+      saveState();
+      applyScenarioState(qIdx, selectedIdx);
+      updateProgressSummaries();
+    }
+
+    function resetQuizProgress() {
+      appState.quizAnswers = {};
+      saveState();
+      if (SYLLABUS_MODULES[activeModuleIndex].id === 6) {
+        renderModule(activeModuleIndex, false);
+      } else {
+        updateProgressSummaries();
+      }
+    }
+
+    function updateProgressSummaries() {
+      const mod = SYLLABUS_MODULES[activeModuleIndex];
+      const stats = getQuizStats();
+
+      // Header & Footer Visible Position Labels
+      const headerStatus = document.getElementById('header-mod-status');
+      const footerStatus = document.getElementById('footer-mod-status');
+      const drawerPos = document.getElementById('drawer-position-status');
+      const drawerVisited = document.getElementById('drawer-visited-status');
+      const drawerQuiz = document.getElementById('drawer-quiz-status');
+      const quizLabSummary = document.getElementById('quiz-lab-summary');
+
+      if (headerStatus) headerStatus.textContent = mod.code;
+      if (footerStatus) footerStatus.textContent = `${mod.code} • ${mod.title}`;
+      if (drawerPos) drawerPos.textContent = mod.code;
+      if (drawerVisited) drawerVisited.textContent = `${appState.visitedModules.length} of ${SYLLABUS_MODULES.length} viewed`;
+      if (drawerQuiz) {
+        drawerQuiz.textContent = stats.answeredCount > 0
+          ? `${stats.answeredCount} of ${stats.total} answered (${stats.correctCount} correct)`
+          : `0 of ${stats.total} answered`;
+      }
+      if (quizLabSummary) {
+        quizLabSummary.textContent = stats.answeredCount > 0
+          ? `${stats.answeredCount} of ${stats.total} answered • ${stats.correctCount} correct`
+          : `0 of ${stats.total} scenarios answered`;
+      }
+
+      // Render Drawer Navigation List with Honest Position/Visited/Quiz Badges
+      const drawerList = document.getElementById('drawer-nav-list');
+      if (drawerList) {
+        drawerList.innerHTML = SYLLABUS_MODULES.map((m, i) => {
+          const isCurrent = i === activeModuleIndex;
+          const isVisited = appState.visitedModules.includes(i);
+          let statusBadge = '';
+
+          if (m.id === 6 && stats.answeredCount === stats.total) {
+            statusBadge = `<span class="px-2 py-0.5 rounded-full bg-emerald-400/15 border border-emerald-400/40 font-mono text-[11px] text-emerald-300 shrink-0">${stats.correctCount}/${stats.total} Quiz</span>`;
+          } else if (isCurrent) {
+            statusBadge = `<span class="px-2 py-0.5 rounded-full bg-pnix-mint/20 border border-pnix-mint/50 font-mono text-[11px] text-pnix-mint shrink-0">Current</span>`;
+          } else if (isVisited) {
+            statusBadge = `<span class="px-2 py-0.5 rounded-full bg-slate-800 border border-white/10 font-mono text-[11px] text-slate-300 shrink-0">Viewed</span>`;
+          }
+
+          return `
+            <button
+              type="button"
+              onclick="renderModule(${i}); closeDrawer(false);"
+              ${isCurrent ? 'aria-current="step"' : ''}
+              class="w-full text-left p-3.5 rounded-xl transition-all duration-200 flex items-center justify-between gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint ${
+                isCurrent
+                  ? 'pnix-glass-item-active text-white'
+                  : 'pnix-glass-item text-slate-200 hover:text-white'
+              }"
+            >
+              <div class="min-w-0">
+                <div class="font-mono text-xs text-pnix-mint tracking-wide">${m.code}</div>
+                <div class="font-display font-normal text-sm sm:text-base mt-0.5 truncate">${m.title}</div>
+              </div>
+              ${statusBadge}
+            </button>
+          `;
+        }).join('');
+      }
+    }
+
+    function renderModule(index, shouldScroll = true) {
+      activeModuleIndex = Math.max(0, Math.min(SYLLABUS_MODULES.length - 1, index));
+      appState.activeModuleIndex = activeModuleIndex;
+      if (!appState.visitedModules.includes(activeModuleIndex)) {
+        appState.visitedModules.push(activeModuleIndex);
+      }
+      saveState();
+
+      const mod = SYLLABUS_MODULES[activeModuleIndex];
+
+      // Update Top Spectrum Position Bar
+      const pct = ((activeModuleIndex + 1) / SYLLABUS_MODULES.length) * 100;
+      document.getElementById('top-progress-bar').style.width = `${pct}%`;
+
+      // Render Viewport
+      const viewport = document.getElementById('module-viewport');
+      viewport.innerHTML = mod.Render();
+      if(mod.id === 7) mountScenarioEngine();
+
+      // Restore Module-Specific Interactive States
+      if (mod.id === 4) {
+        updateBurndownChart(appState.burndownMode);
+      }
+
+      if (mod.id === 6) {
+        Object.keys(appState.quizAnswers).forEach(qKey => {
+          const qIdx = Number(qKey);
+          const selIdx = appState.quizAnswers[qKey];
+          if (!Number.isNaN(qIdx) && typeof selIdx === 'number') {
+            applyScenarioState(qIdx, selIdx);
+          }
+        });
+      }
+
+      // Update Footer Controls (Keep navigation separate from clearing quiz answers)
+      const prevBtn = document.getElementById('prev-mod-btn');
+      const nextLabel = document.getElementById('next-btn-label');
+      prevBtn.disabled = activeModuleIndex === 0;
+      nextLabel.textContent = activeModuleIndex === SYLLABUS_MODULES.length - 1 ? 'Back to Module 1' : 'Next Module';
+
+      // Render Footer Dots
+      const dots = document.getElementById('footer-dots');
+      dots.innerHTML = SYLLABUS_MODULES.map((m, i) => `
+        <button
+          type="button"
+          onclick="renderModule(${i})"
+          aria-label="Go to ${m.code}: ${m.title}"
+          ${i === activeModuleIndex ? 'aria-current="step"' : ''}
+          class="h-2.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-pnix-mint ${
+            i === activeModuleIndex ? 'w-8 bg-purple-400' : 'w-2.5 bg-slate-600 hover:bg-slate-400'
+          }"
+        ></button>
+      `).join('');
+
+      updateProgressSummaries();
+
+      if (shouldScroll) {
+        window.scrollTo({
+          top: 0,
+          behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+        });
+      }
+    }
+
+    // Event Listeners
+    document.getElementById('drawer-open-btn').addEventListener('click', openDrawer);
+    document.getElementById('drawer-close-btn').addEventListener('click', () => closeDrawer(true));
+    backdrop.addEventListener('click', () => closeDrawer(true));
+
+    document.getElementById('prev-mod-btn').addEventListener('click', () => {
+      if (activeModuleIndex > 0) renderModule(activeModuleIndex - 1);
+    });
+
+    document.getElementById('next-mod-btn').addEventListener('click', () => {
+      if (activeModuleIndex < SYLLABUS_MODULES.length - 1) {
+        renderModule(activeModuleIndex + 1);
+      } else {
+        renderModule(0);
+      }
+    });
+
+    // Boot Application
+    renderModule(activeModuleIndex, false);
+  </script>
+<script>if("serviceWorker" in navigator && location.protocol !== "file:") navigator.serviceWorker.register("./sw.js").catch(console.warn);</script><script>
+(()=>{
+const video=document.getElementById('ambient-video');
+const button=document.getElementById('ambient-motion-toggle');
+const layer=video.parentElement;
+const preference=matchMedia('(prefers-reduced-motion: reduce)');
+let enabled=!preference.matches;
+try{const saved=localStorage.getItem('pnix_ambient_motion');if(saved!==null)enabled=saved==='on'&&!preference.matches;}catch(e){}
+function update(){
+ const playing=enabled&&!document.hidden&&!preference.matches;
+ button.textContent='Background motion: '+(enabled&&!preference.matches?'On':'Off');
+ button.setAttribute('aria-pressed',String(enabled&&!preference.matches));
+ layer.classList.toggle('still',!playing);
+ if(playing)video.play().catch(()=>{layer.classList.add('still');button.textContent='Background motion: Off';button.setAttribute('aria-pressed','false');});else video.pause();
+}
+button.addEventListener('click',()=>{enabled=!(enabled&&!preference.matches);try{localStorage.setItem('pnix_ambient_motion',enabled?'on':'off');}catch(e){}update();});
+preference.addEventListener('change',update);
+document.addEventListener('visibilitychange',update);
+video.addEventListener('error',()=>layer.classList.add('still'));
+update();
+})();
+</script></body>
+</html>
