@@ -1,8 +1,8 @@
 import {questions,scoreAttempt,PASS_SCORE} from './questions.js';
 import {seed,extra} from '../course.js';
-const $=id=>document.getElementById(id),KEY='pnix-sql-exam-v1';let state={},history=[],index=0,grading=false,previewToken=0;
-try{const data=JSON.parse(localStorage.getItem(KEY));if(data?.version===1){state=data.attempt||{};history=Array.isArray(data.history)?data.history.slice(-10):[];index=Number.isInteger(state.index)?Math.max(0,Math.min(questions.length-1,state.index)):0;}}catch{}
-function save(){state.index=index;try{localStorage.setItem(KEY,JSON.stringify({version:1,attempt:state,history}));$('storageStatus').textContent='Saved in this browser. Progress and scores do not sync between devices.';}catch{$('storageStatus').textContent='Browser storage is unavailable. Keep this page open; your work cannot be saved after it closes.';}}
+const $=id=>document.getElementById(id),KEY='pnix-sql-exam-v2';let state={},history=[],index=0,grading=false,previewToken=0;
+try{const data=JSON.parse(localStorage.getItem(KEY));if(data?.version===2){state=data.attempt||{};history=Array.isArray(data.history)?data.history.slice(-10):[];index=Number.isInteger(state.index)?Math.max(0,Math.min(questions.length-1,state.index)):0;}}catch{}
+function save(){state.index=index;try{localStorage.setItem(KEY,JSON.stringify({version:2,attempt:state,history}));$('storageStatus').textContent='Saved in this browser. Progress and scores do not sync between devices.';}catch{$('storageStatus').textContent='Browser storage is unavailable. Keep this page open; your work cannot be saved after it closes.';}}
 function has(q){const v=state.answers?.[q.id];return q.kind==='choice'?Number.isInteger(v)&&v>=0&&v<q.options.length:typeof v==='string'&&v.trim().length>0;}
 const answered=()=>questions.filter(has).length;
 function show(which){for(const id of ['welcome','session','report'])$(id).hidden=id!==which;previewToken++;}
