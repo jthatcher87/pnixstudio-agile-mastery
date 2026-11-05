@@ -1,19 +1,44 @@
 importScripts('../assets/sql-wasm.js');
-let engine;const ready=initSqlJs({locateFile:f=>'../assets/'+f}).then(s=>engine=s);
-function query(db,sql){const stmt=db.prepare(sql);try{const columns=stmt.getColumnNames(),values=[];while(stmt.step()){if(values.length>=500)throw Error('Result exceeds 500 rows. Narrow the query or use LIMIT.');values.push(stmt.get());}return {columns,values};}finally{stmt.free();}}
+const ready=initSqlJs({locateFile:p=>'../assets/'+p});
 function command(sql){return sql.replace(/--[^\n]*(?:\n|$)|\/\*[\s\S]*?\*\//g,' ').trim().match(/^[A-Za-z]+/)?.[0].toUpperCase();}
-function execute(db,sql){const trace=[];let last=null,i=0,failedIndex=1;try{for(const stmt of db.iterateStatements(sql)){i++;failedIndex=i;if(i>100)throw Error('Use at most 100 statements in one script.');const source=stmt.getSQL(),cmd=command(source);const columns=stmt.getColumnNames(),values=[];while(stmt.step()){if(values.length>=500)throw Error('A result exceeds 500 rows. Use LIMIT.');values.push(stmt.get());}trace.push({statement:i,command:cmd,changes:['INSERT','UPDATE','DELETE','REPLACE'].includes(cmd)?db.getRowsModified():0});if(columns.length)last={columns,values};failedIndex=i+1;}failedIndex=i||1;if(!i)throw Error('Write at least one SQL statement.');try{db.run('BEGIN;');}catch{throw Error('A transaction is still open. End it with COMMIT or ROLLBACK.');}db.run('ROLLBACK;');return {trace,last:last||{columns:['statement','command','rows_changed'],values:trace.map(t=>[t.statement,t.command,t.changes])}};}catch(e){throw Error(`Statement ${failedIndex}: ${e.message}`);}}
-function fixture(sql,seed,exercise){const db=new engine.Database(),reference=exercise?new engine.Database():null;try{db.run(seed);db.run('PRAGMA foreign_keys = ON;');let output;for(let i=0;i<(exercise?.repeat||1);i++)output=execute(db,sql);if(!exercise)return {output};reference.run(seed);reference.run('PRAGMA foreign_keys = ON;');for(let i=0;i<(exercise.repeat||1);i++)execute(reference,exercise.answer);const failed=[];for(const c of exercise.checks){try{if(JSON.stringify(query(db,c.sql))!==JSON.stringify(query(reference,c.sql)))failed.push(c.label);}catch(e){failed.push(`${c.label}: ${e.message}`);}}for(const cmd of exercise.requires||[])if(!output.trace.some(t=>t.command===cmd))failed.push(`Include a ${cmd} statement in the script`);return {output,failed};}finally{db.close();reference?.close();}}
-
-function same(a,b,ordered){if(a.columns.length!==b.columns.length||a.columns.some((c,i)=>c.toLowerCase()!==b.columns[i].toLowerCase()))return false;const values=r=>r.values.map(row=>JSON.stringify(row.map(v=>typeof v==='number'?Math.round(v*1e6)/1e6:v)));let av=values(a),bv=values(b);if(!ordered){av.sort();bv.sort();}return JSON.stringify(av)===JSON.stringify(bv);}
-function read(sql,seed){const db=new engine.Database();try{db.run(seed);db.run('PRAGMA query_only=ON');const out=execute(db,sql);if(out.trace.length!==1||!['SELECT','WITH'].includes(out.trace[0].command))throw Error('Use one SELECT query for this question.');return out.last;}finally{db.close();}}
-
-function buildDDL(sql){const db=new engine.Database();db.run('PRAGMA foreign_keys=ON;');let i=0;try{for(const stmt of db.iterateStatements(sql)){i++;if(i>100)throw Error('Use at most 100 CREATE statements.');if(command(stmt.getSQL())!=='CREATE')throw Error('The DDL lab accepts CREATE statements only. The runner supplies test data and enables foreign keys.');while(stmt.step()){};}if(!i)throw Error('Write your CREATE TABLE statements first.');return db;}catch(e){db.close();throw Error('DDL statement '+Math.max(1,i)+': '+e.message);}}
-function structures(db){return query(db,"SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name").values.map(([name])=>({name,columns:query(db,'PRAGMA table_info('+JSON.stringify(name)+')').values.map(v=>({name:v[1],type:v[2],required:!!v[3],primaryKeyPosition:v[5]}))}));}
-function assessDDL(data){const db=buildDDL(data.sql),checks=[];try{const tables=structures(db);if(data.action==='compile'){return {tables};}let complete=true;for(const [name,cols]of Object.entries(data.contract)){const t=tables.find(t=>t.name.toLowerCase()===name);const ok=!!t&&cols.every(c=>t.columns.some(x=>x.name.toLowerCase()===c));checks.push({label:name+': required table and columns',passed:ok});if(!ok)complete=false;}if(!complete)return {tables,checks,passed:false};
-for(const name of Object.keys(data.contract)){const cols=query(db,'PRAGMA table_info('+name+')').values;checks.push({label:name+': declared primary key',passed:cols.some(v=>v[5]>0)});checks.push({label:name+': appropriate declared ID and label types',passed:data.contract[name].every(c=>{const row=cols.find(v=>v[1].toLowerCase()===c);return c.endsWith('_id')?/INT/i.test(row[2]):/TEXT|CHAR|CLOB/i.test(row[2]);})});checks.push({label:name+': mandatory fields declare NOT NULL',passed:data.contract[name].filter(c=>!((name==='classes'&&c==='class_id')||(name==='voters'&&c==='voter_id')||(name==='elections'&&c==='election_id'))).every(c=>cols.find(v=>v[1].toLowerCase()===c)[3]===1)});}
-for(const [name,needed]of Object.entries(data.fkContract)){const groups={};for(const row of query(db,'PRAGMA foreign_key_list('+name+')').values){const g=groups[row[0]]??={table:String(row[2]).toLowerCase(),pairs:[]};g.pairs.push(String(row[3]).toLowerCase()+':'+String(row[4]).toLowerCase());}for(const [parent,pairs]of needed){checks.push({label:name+': foreign key to '+parent+' ('+pairs.map(x=>x.split(':')[0]).join(', ')+')',passed:Object.values(groups).some(g=>g.table===parent&&JSON.stringify(g.pairs.sort())===JSON.stringify([...pairs].sort()))});}}
-try{db.run(data.seed);checks.push({label:'Accept the complete valid election fixture',passed:true});}catch(e){checks.push({label:'Accept the complete valid election fixture: '+e.message,passed:false});return {tables,checks,passed:false};}
-const snapshot=db.export();for(const [label,shouldAccept,sql]of data.probes){const probe=new engine.Database(snapshot);let accepted=false,detail='';try{probe.run('PRAGMA foreign_keys=ON;');probe.run(sql);accepted=probe.getRowsModified()>0;}catch(e){detail=e.message;}finally{probe.close();}checks.push({label,passed:shouldAccept?accepted:!accepted&&!!detail,detail:shouldAccept?(accepted?'Valid operation accepted.':detail||'Operation made no change.'):(detail||'Invalid operation was not rejected with an error.')});}
-return {tables,checks,passed:checks.every(c=>c.passed)};}finally{db.close();}}
-onmessage=async({data})=>{try{await ready;if(data.mode==='ddl'){postMessage(assessDDL(data));return;}const actual=read(data.sql,data.fixture);if(data.action==='preview'){postMessage({actual});return;}const expected=read(data.task.answer,data.fixture),secondActual=read(data.sql,data.fixture+data.extra),secondExpected=read(data.task.answer,data.fixture+data.extra);const base=same(actual,expected,data.task.ordered),second=same(secondActual,secondExpected,data.task.ordered);postMessage({actual,passed:base&&second,feedback:base&&second?'✓ Query task passed on both datasets. Explain why the joins, grouping and validation rules produce this result.':base?'The sample matches, but additional records reveal a problem. Check election-scoped keys, ties, empty elections and malformed values.':'Check the requested columns and aliases, join keys, ON/WHERE placement, grouped calculations and data-cleaning rules.'});}catch(e){postMessage({error:e.message,passed:false});}};
+function result(stmt){const columns=stmt.getColumnNames(),values=[];while(stmt.step()){if(values.length>=500)throw Error('Result exceeds 500 rows. Narrow the query.');values.push(stmt.get());}return {columns,values};}
+function execute(db,sql,allowed,continueErrors=false){
+ const trace=[];let count=0;
+ for(const stmt of db.iterateStatements(sql)){
+  if(++count>100)throw Error('Use at most 100 statements.');
+  const source=stmt.getSQL(),cmd=command(source);
+  if(!allowed.includes(cmd))throw Error('Statement '+count+': '+cmd+' is not permitted here.');
+  try{const output=result(stmt);trace.push({statement:count,sql:source,output,changes:db.getRowsModified()});}
+  catch(e){if(!continueErrors)throw e;trace.push({statement:count,sql:source,error:e.message});}
+ }
+ if(!count)throw Error('Write SQL before running.');return trace;
+}
+function read(engine,sql,fixture){const db=new engine.Database();try{db.run(fixture);db.run('PRAGMA query_only=ON');const trace=execute(db,sql,['SELECT','WITH']);if(trace.length!==1)throw Error('Use one SELECT or WITH query.');return trace[0].output;}finally{db.close();}}
+function same(actual,expected,ordered=false){
+ if(actual.columns.length!==expected.columns.length)return false;
+ const key=row=>JSON.stringify(row.map(v=>typeof v==='number'?Math.round(v*1e6)/1e6:v));
+ let a=actual.values.map(key),b=expected.values.map(key);if(!ordered){a.sort();b.sort();}return JSON.stringify(a)===JSON.stringify(b);
+}
+function schema(engine,data){const db=new engine.Database();try{
+ db.run('PRAGMA foreign_keys=ON');execute(db,data.sql,['CREATE']);
+ const tables=db.exec("SELECT name,sql FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name");
+ if(data.action==='preview')return {tables,trace:data.demo?.trim()?execute(db,data.demo,['INSERT','UPDATE','DELETE','SELECT','WITH'],true):[]};
+ const checks=[];
+ try{db.run(data.schemaSeed);}catch(e){return {tables,checks,error:'Reference probes could not load this design: '+e.message+'. Alternate names or structures require reviewer inspection; this is not an automatic score.'};}
+ const snapshot=db.export();
+ for(const [label,shouldAccept,sql]of data.probes){
+  const p=new engine.Database(snapshot);let accepted=false,error='';
+  try{p.run('PRAGMA foreign_keys=ON');p.run(sql);accepted=p.getRowsModified()>0;}catch(e){error=e.message;}finally{p.close();}
+  checks.push({label,passed:shouldAccept?accepted:!accepted&&!!error,detail:error||'Operation accepted.'});
+ }
+ return {tables,checks};
+ }finally{db.close();}}
+ onmessage=async({data})=>{try{
+ const engine=await ready;
+ if(data.mode==='schema'){postMessage(schema(engine,data));return;}
+ const actual=read(engine,data.sql,data.fixture);
+ if(data.action!=='review'){postMessage({actual});return;}
+ const expected=read(engine,data.answer,data.fixture);
+ const additionalActual=read(engine,data.sql,data.fixture+data.extra),additionalExpected=read(engine,data.answer,data.fixture+data.extra);
+ postMessage({actual,expected,baseMatch:same(actual,expected,data.ordered),additionalMatch:same(additionalActual,additionalExpected,data.ordered),note:'Result comparison is evidence only. Reviewer must assess approach, required constructs, explanations, hard-coding and partial credit. Column labels are not graded.'});
+ }catch(e){postMessage({error:e.message});}};
